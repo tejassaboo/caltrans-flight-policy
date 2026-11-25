@@ -1,5 +1,7 @@
 # Caltrans Commercial Air Travel Flight Policy
 
+**Source of the handbook:** https://www.dot.ca.gov/-/media/dot-media/programs/accounting/documents/ch15-transportation-051424-a11y.pdf. The agent reads it verbatim (bundled at `src/plugin/data/policy.txt`); flights, fares and trips are synthetic.
+
 **No affiliation with the California Department of Transportation.** The handbook is Caltrans' public
 *Accounting Manual, Chapter 15 - Transportation* (accessible version dated 05/14/24), bundled verbatim for research.
 It is a published state government manual, but treat it like the other original handbooks: do not publish this
