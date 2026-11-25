@@ -318,6 +318,17 @@ def notice_codes(trip, scope):
     return [code, ReasonCode.ADVANCE_PURCHASE_TOO_LATE] if ahead < limit else []
 
 
+def justification_codes(trip, fares, chosen):
+    """Lines 213-221 and 224-226: the reason code justifications Concur asks for before it books this fare (a
+    non-contracted carrier, a refundable fare, a short-notice booking)."""
+    codes = []
+    if kind_of(trip, chosen) is not None:
+        codes.append(ReasonCode.REFUNDABLE_FARE_JUSTIFIED)
+    if chosen.carrier not in fares["carriers"]:
+        codes.append(ReasonCode.NON_CONTRACT_CARRIER_JUSTIFIED)
+    return codes + notice_codes(trip, fares["scope"])
+
+
 def offer_codes(trip, fares, chosen):
     """The codes that describe the booked fare: contract or non-refundable, and the justifications of lines
     213-221 it needs."""
@@ -375,6 +386,13 @@ def default_booking(trip, fares, clauses):
     if hold is not None:
         return unclear_hold(fares, hold, clauses)
     reasons = [ReasonCode.LOWEST_FARE, *offer_codes(trip, fares, chosen), *routing]
+    if notice_codes(trip, fares["scope"]):
+        # Lines 220-221 and 224-226: a short-notice booking cannot proceed without its reason code justification,
+        # so the reason given is a justification the booking needs (the short-notice one among them), not the
+        # generic lowest-fare or fare-describing codes: this is what the 6/7-day and 29/30-day twins test.
+        if trip.ticket_credits:
+            raise ValueError("a short-notice booking with a ticket credit is not modelled")
+        reasons = justification_codes(trip, fares, chosen)
     why = ("Lines 136-137: the lowest cost airfare. Lines 167-168 and 186-187 allow a non-refundable fare only below "
            f"the contract rate of {fares["rate"]} cents")
     if trip.must_arrive_by:
@@ -400,7 +418,12 @@ def better_cabin(trip, fares, clauses):
     chosen, hold, routing = default_choice(fares)
     if hold is not None or routing:
         raise ValueError("a business request with a routing or in-state question is not modelled")
-    return booked(trip, [chosen], [ReasonCode.LOWEST_FARE, ReasonCode.UPGRADE_NOT_ELIGIBLE], clauses,
+    if notice_codes(trip, fares["scope"]):
+        raise ValueError("a short-notice business request is not modelled")
+    # The booked fare may need a justification of lines 213-221 (a non-contracted carrier), so that section is
+    # accepted beside the ones the decline rests on.
+    return booked(trip, [chosen], [ReasonCode.LOWEST_FARE, ReasonCode.UPGRADE_NOT_ELIGIBLE],
+                  clauses + justification_clause(offer_codes(trip, fares, chosen)),
                   "Lines 136-137: travelers must purchase the lowest cost airfare whenever possible, and the chapter "
                   "grants no better cabin: the lowest allowed economy fare, not business.")
 
@@ -413,18 +436,34 @@ def refundable_wish(trip, fares, clauses):
     if not cheaper:
         raise ValueError("a refundable request with no cheaper non-refundable fare is not modelled")
     if trip.assignment_email_on_file and not trip.plans_fixed:
+        # Two defensible bookings. Granting the request: Example 1 (lines 231-234) names a refundable fare chosen
+        # for a short-notice assignment, documented by email, as a justification, and lines 161-162 put a
+        # non-refundable fare first only when the dates are fixed; the lowest refundable fare is the contract fare.
+        # Declining it: lines 136-137 ("must purchase the lowest cost airfare whenever possible") still hold, and
+        # lines 183-185 say Southwest "offers the most flexibility in changing non-refundable flight reservations",
+        # which meets the shifting schedule; the handbook never requires a refundable fare.
         chosen = fares["rate_offer"]
-        reasons = [ReasonCode.REFUNDABLE_FARE_JUSTIFIED, ReasonCode.STATE_CONTRACT_FARE, *notice_codes(trip, fares["scope"])]
-        return booked(trip, [chosen], reasons, [Clause.REASON_CODE_JUSTIFICATIONS, Clause.REFUNDABLE_AIRFARE,
-                                                Clause.NON_REFUNDABLE_AIRFARE],
+        cheapest, hold, _ = default_choice(fares)
+        if hold is not None or cheapest.carrier != SOUTHWEST or fares["scope"] != "IN_STATE":
+            raise ValueError("a justified refundable request without an in-state Southwest alternative is not modelled")
+        reasons = [ReasonCode.REFUNDABLE_FARE_JUSTIFIED, ReasonCode.STATE_CONTRACT_FARE, *notice_codes(trip, fares["scope"]),
+                   ReasonCode.LOWEST_FARE, ReasonCode.SOUTHWEST_IN_STATE_FARE]
+        return booked(trip, [chosen, cheapest], reasons,
+                      [Clause.REASON_CODE_JUSTIFICATIONS, Clause.REFUNDABLE_AIRFARE, Clause.NON_REFUNDABLE_AIRFARE,
+                       Clause.COMMERCIAL_AIR_TRAVEL],
                       "Lines 231-234 (Example 1): a refundable fare chosen for a short-notice assignment is justified "
                       "by the email on file; lines 161-162 put a non-refundable fare first only when the dates are "
-                      "fixed. The traveller asks for a refundable fare: the contract fare, the lowest refundable one.")
+                      "fixed. The traveller asks for a refundable fare: the contract fare, the lowest refundable one. "
+                      "Booking Southwest instead is defensible too: lines 136-137 ask for the lowest cost airfare "
+                      "whenever possible, and lines 183-185 call Southwest the most flexible for changes.")
     if trip.plans_fixed and not trip.assignment_email_on_file:
         chosen, hold, _ = default_choice(fares)
         if hold is not None or kind_of(trip, chosen) is not None:
             raise ValueError("a declined refundable request that does not book a non-refundable fare is not modelled")
-        return booked(trip, [chosen], [ReasonCode.LOWEST_FARE, ReasonCode.REFUNDABLE_FARE_NOT_ALLOWED],
+        # The ground for declining is that nothing justifies a refundable fare (lines 161-162, 219), not the
+        # lowest-fare rule alone (a justified refundable fare is booked although dearer), so LOWEST_FARE is not
+        # accepted (brief lesson 12, as for the YCAL request declined at lines 203-207).
+        return booked(trip, [chosen], [ReasonCode.REFUNDABLE_FARE_NOT_ALLOWED],
                       clauses + [Clause.REASON_CODE_JUSTIFICATIONS],
                       "Lines 161-162: with the dates fixed and a change unlikely, consider the non-refundable fare "
                       "first; lines 136-137: the lowest cost airfare. Nothing on file justifies a refundable fare "

@@ -142,6 +142,7 @@
       "INTERNATIONAL_AIRFARE",
       "NON_REFUNDABLE_AIRFARE",
       "OUT_OF_STATE_APPROVAL",
+      "REASON_CODE_JUSTIFICATIONS",
       "REFUNDABLE_AIRFARE"
     ],
     "unclear_phrase": ""

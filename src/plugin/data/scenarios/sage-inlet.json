@@ -115,7 +115,6 @@
       "ECONOMY"
     ],
     "reason_codes": [
-      "LOWEST_FARE",
       "REFUNDABLE_FARE_NOT_ALLOWED"
     ],
     "approvers": [
@@ -179,5 +178,5 @@
       "why": "change penalties after booking, not the fare choice"
     }
   ],
-  "design_notes": "The dates are fixed and a change is unlikely, so lines 161-162 put the non-refundable fare first, and lines 136-137 require the lowest cost airfare; nothing on file justifies a refundable fare (219, 231-239). The request is declined on the lowest-fare ground: book Southwest (183-185)."
+  "design_notes": "The dates are fixed and a change is unlikely, so lines 161-162 put the non-refundable fare first, and lines 136-137 require the lowest cost airfare; nothing on file justifies a refundable fare (219, 231-239). The request is declined because nothing justifies the refundable fare (a justified one is booked although dearer, tule-marsh), so only REFUNDABLE_FARE_NOT_ALLOWED is accepted (lesson 12): book Southwest (183-185)."
 }

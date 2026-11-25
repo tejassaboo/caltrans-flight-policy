@@ -250,7 +250,7 @@ scenario(
             {"ua": fl("UA", "13:30"), "ba": fl("BA", "16:40")},
             [*contract_offers("ua", "ua", "SFO", "LHR"), of("ua-business", "ua", 540000, cabin="BUSINESS"),
              of("ba-saver", "ba", 84000), of("ba-business", "ba", 498000, cabin="BUSINESS")])],
-    expected("BOOK", ["ba-saver"], ["LOWEST_FARE", "UPGRADE_NOT_ELIGIBLE"], OUT_OK, INTL_BASE),
+    expected("BOOK", ["ba-saver"], ["LOWEST_FARE", "UPGRADE_NOT_ELIGIBLE"], OUT_OK, INTL_BASE + JUST),
     [LOWEST, NONREF, OOS_APPROVAL],
     "The chapter has no cabin rule at all, and lines 136-137 require the lowest cost airfare: the BA economy fare, "
     "non-refundable and below United's contract fare (167-168). The business request is declined on the lowest-fare "
@@ -276,21 +276,24 @@ scenario(
     distractors=[D_PENALTY])
 
 scenario(
-    "elkhorn-reed", "easy", ["multi_leg"],
+    "elkhorn-reed", "easy", ["multi_leg", "date_arithmetic"],
     "Please get me from San Diego to San Francisco on December 15 for the asset management training that starts "
     "the next morning. Connecting is fine with me.",
     trip("SAN", "SFO", traveller_name="Aaliyah Brooks", traveller_title="Transportation Engineer (Electrical)",
-         travel_date="2026-12-15", purpose="Asset management training, Oakland, from December 16",
-         purpose_kind="TRAINING", connections_ok=True),
+         travel_date="2026-12-15", booking_date="2026-12-10",
+         purpose="Asset management training, Oakland, from December 16", purpose_kind="TRAINING",
+         connections_ok=True),
     [search("SAN", "SFO", "2026-12-15",
             {"wn": fl("WN", "07:10", via=["LAS"], layovers=[45]), "as": fl("AS", "08:00"), "ua": fl("UA", "10:00")},
             [of("wn-saver", "wn", 11900), *contract_offers("as", "as", "SAN", "SFO"), of("ua-saver", "ua", 18900)])],
-    expected("BOOK", ["wn-saver"], ["ALTERNATE_ROUTE_WITHIN_MARGIN", "COST_SAVINGS", "LOWEST_FARE",
-                                    "NON_CONTRACT_CARRIER_JUSTIFIED", "NON_REFUNDABLE_BELOW_CONTRACT_FARE",
-                                    "SOUTHWEST_IN_STATE_FARE"], IN_OK, BASE + JUST),
-    [LOWEST, IN_STATE, NONREF, ROUTING],
+    expected("BOOK", ["wn-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED",
+                                    "NON_CONTRACT_CARRIER_JUSTIFIED"], IN_OK, BASE + JUST),
+    [LOWEST, IN_STATE, NONREF, ROUTING, REASONS],
     "In-state: lines 183-185 allow Southwest's non-refundable fare, which is also below the 15400 contract fare "
-    "(167-168) and the lowest cost airfare. The traveller accepts the connection and the training is the next day.",
+    "(167-168) and the lowest cost airfare. The traveller accepts the connection and the training is the next day. "
+    "Booked December 10 for December 15: 5 days, less than 7 (220), and Concur asks for the justification before "
+    "it books (224-226), so the reason given is a justification this booking needs: short notice, or Southwest as a "
+    "non-contracted carrier (218).",
     distractors=[D_ANYTIME])
 
 scenario(
@@ -303,11 +306,12 @@ scenario(
     [search("SAN", "SFO", "2026-12-17",
             {"wn": fl("WN", "07:10", via=["LAS"], layovers=[45]), "as": fl("AS", "08:00")},
             [of("wn-saver", "wn", 11900), *contract_offers("as", "as", "SAN", "SFO")])],
-    expected("BOOK", ["wn-saver"], ["LOWEST_FARE", "REFUNDABLE_FARE_NOT_ALLOWED"], IN_OK, BASE + JUST),
+    expected("BOOK", ["wn-saver"], ["REFUNDABLE_FARE_NOT_ALLOWED"], IN_OK, BASE + JUST),
     [LOWEST, CONSIDER, IN_STATE, REASONS],
     "The dates are fixed and a change is unlikely, so lines 161-162 put the non-refundable fare first, and lines "
     "136-137 require the lowest cost airfare; nothing on file justifies a refundable fare (219, 231-239). The "
-    "request is declined on the lowest-fare ground: book Southwest (183-185).",
+    "request is declined because nothing justifies the refundable fare (a justified one is booked although dearer, "
+    "tule-marsh), so only REFUNDABLE_FARE_NOT_ALLOWED is accepted (lesson 12): book Southwest (183-185).",
     distractors=[D_PENALTY])
 
 # ============================== boundary twins ==============================
@@ -376,12 +380,13 @@ for name, twin, booked_on in (("kelp-ridge", "laurel-wash", "2026-11-25"), ("lau
         [search("LAX", "PHX", "2026-12-01",
                 {"aa": fl("AA", "07:00"), "wn": fl("WN", "11:30")},
                 [of("aa-saver", "aa", 15900), *contract_offers("aa", "aa", "LAX", "PHX"), of("wn-saver", "wn", 12900)])],
-        expected("BOOK", ["aa-saver"], ["LOWEST_FARE", "NON_REFUNDABLE_BELOW_CONTRACT_FARE"]
-                 + (["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED"] if short else []), OUT_OK,
+        expected("BOOK", ["aa-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED"] if short
+                 else ["LOWEST_FARE", "NON_REFUNDABLE_BELOW_CONTRACT_FARE"], OUT_OK,
                  OUT_BASE + (JUST if short else [])),
         [LOWEST, OUT_OF_STATE, OOS_APPROVAL] + ([REASONS] if short else []),
-        ("Booked November 25 for December 1: 6 calendar days, less than 7 (220), so the booking carries the "
-         "short-notice justification. ") if short else
+        ("Booked November 25 for December 1: 6 calendar days, less than 7 (220), and Concur asks for the "
+         "justification before it books (224-226): the reason is the short-notice justification, not LOWEST_FARE. ")
+        if short else
         ("Booked November 24 for December 1: 7 calendar days, not less than 7 (220): no short-notice justification. ")
         + "Southwest lands 13:40 local, after the 12:30 limit; American's non-refundable 15900 is below its 19800 "
         "contract fare (186-187) and is the lowest cost airfare that works.",
@@ -401,19 +406,20 @@ for name, twin, booked_on in (("manzanita-pool", "nopal-crest", "2026-11-24"),
              sign_offs=[trip_ok(date="2026-11-20"), oos_ok(date="2026-11-20")]),
         [search("SFO", "YVR", "2026-12-23",
                 {"ac": fl("AC", "08:00"), "ua": fl("UA", "09:00"), "ws": fl("WS", "14:00")},
-                [of("ac-saver", "ac", 29900), *contract_offers("ua", "ua", "SFO", "YVR"), of("ws-saver", "ws", 24900)])],
-        expected("BOOK", ["ac-saver"], ["LOWEST_FARE", "NON_CONTRACT_CARRIER_JUSTIFIED",
-                                        "NON_REFUNDABLE_BELOW_CONTRACT_FARE"]
-                 + (["ADVANCE_PURCHASE_TOO_LATE", "INTERNATIONAL_SHORT_NOTICE_JUSTIFIED"] if short else []), OUT_OK,
-                 INTL_BASE + JUST),
-        [LOWEST, NONREF, REASONS, OOS_APPROVAL],
-        ("Booked November 24 for December 23: 29 calendar days, less than 30 (221), so an international "
-         "short-notice justification applies. ") if short else
+                [of("ac-saver", "ac", 31900), of("ua-saver", "ua", 29900), *contract_offers("ua", "ua", "SFO", "YVR"),
+                 of("ws-saver", "ws", 24900)])],
+        expected("BOOK", ["ua-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "INTERNATIONAL_SHORT_NOTICE_JUSTIFIED"] if short
+                 else ["LOWEST_FARE", "NON_REFUNDABLE_BELOW_CONTRACT_FARE"], OUT_OK,
+                 INTL_BASE + (JUST if short else [])),
+        [LOWEST, NONREF, OOS_APPROVAL] + ([REASONS] if short else []),
+        ("Booked November 24 for December 23: 29 calendar days, less than 30 (221), and Concur asks for the "
+         "justification before it books (224-226): the reason is the short-notice justification, not LOWEST_FARE. ")
+        if short else
         ("Booked November 23 for December 23: 30 calendar days, not less than 30 (221): no short-notice "
          "justification. ")
-        + "WestJet lands 16:00, after the 15:30 limit; Air Canada's non-refundable 29900 is below United's 38900 "
-        "contract fare (167-168) and is the lowest cost airfare that works; Air Canada is not the contract carrier "
-        "(218).",
+        + "WestJet lands 16:00, after the 15:30 limit; United's own non-refundable 29900 is below its 38900 "
+        "contract fare (167-168) and is the lowest cost airfare that works (Air Canada's 31900 is dearer). United is "
+        "the contract carrier, so no non-contracted-carrier justification (218) is involved.",
         twin_of=twin, twin_fact="booked November 24 or November 23 for a December 23 flight (29 or 30 days ahead)",
         distractors=[D_PHONE])
 
@@ -510,14 +516,18 @@ scenario(
     [search("SAN", "SFO", "2026-11-24",
             {"wn": fl("WN", "07:10", via=["LAS"], layovers=[45]), "as": fl("AS", "09:00")},
             [of("wn-saver", "wn", 11900), *contract_offers("as", "as", "SAN", "SFO")])],
-    expected("BOOK", ["as-controlled"], ["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED",
-                                         "REFUNDABLE_FARE_JUSTIFIED", "STATE_CONTRACT_FARE"], IN_OK,
-             ["NON_REFUNDABLE_AIRFARE", "REASON_CODE_JUSTIFICATIONS", "REFUNDABLE_AIRFARE"]),
-    [EXAMPLE_ONE, REASONS, CONSIDER, CONTRACT],
+    expected("BOOK", ["as-controlled", "wn-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED",
+                                                     "LOWEST_FARE", "REFUNDABLE_FARE_JUSTIFIED",
+                                                     "SOUTHWEST_IN_STATE_FARE", "STATE_CONTRACT_FARE"], IN_OK,
+             ["COMMERCIAL_AIR_TRAVEL", "NON_REFUNDABLE_AIRFARE", "REASON_CODE_JUSTIFICATIONS", "REFUNDABLE_AIRFARE"]),
+    [EXAMPLE_ONE, REASONS, CONSIDER, CONTRACT, LOWEST, IN_STATE],
     "Example 1 of the reason-code section (231-234) names a refundable fare chosen for a short-notice assignment, "
     "documented by an email, as a justification; lines 161-162 put non-refundable fares first only when the dates "
     "are fixed. The traveller asks for refundable: the lowest refundable fare is the capacity-controlled contract "
-    "fare. Booked a day ahead, so the short-notice code (220) applies too. Southwest is cheaper but declined as asked.",
+    "fare. Booked a day ahead, so the short-notice code (220) applies too. Booking Southwest instead is defensible "
+    "as well (audit): lines 136-137 ask for the lowest cost airfare whenever possible and lines 183-185 call "
+    "Southwest the most flexible carrier for changes, while the chapter never requires a refundable fare; that "
+    "booking declines the request on the lowest-fare ground (LOWEST_FARE, SOUTHWEST_IN_STATE_FARE).",
     distractors=[D_PENALTY])
 
 scenario(

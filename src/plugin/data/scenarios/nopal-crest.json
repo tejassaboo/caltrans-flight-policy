@@ -93,6 +93,12 @@
             "slot": "ac-saver",
             "flight": "ac",
             "cabin": "ECONOMY",
+            "fare_cents": 31900
+          },
+          {
+            "slot": "ua-saver",
+            "flight": "ua",
+            "cabin": "ECONOMY",
             "fare_cents": 29900
           },
           {
@@ -122,14 +128,13 @@
   "expected": {
     "decision": "BOOK",
     "offer_slots": [
-      "ac-saver"
+      "ua-saver"
     ],
     "cabins": [
       "ECONOMY"
     ],
     "reason_codes": [
       "LOWEST_FARE",
-      "NON_CONTRACT_CARRIER_JUSTIFIED",
       "NON_REFUNDABLE_BELOW_CONTRACT_FARE"
     ],
     "approvers": [
@@ -143,7 +148,6 @@
       "INTERNATIONAL_AIRFARE",
       "NON_REFUNDABLE_AIRFARE",
       "OUT_OF_STATE_APPROVAL",
-      "REASON_CODE_JUSTIFICATIONS",
       "REFUNDABLE_AIRFARE"
     ],
     "unclear_phrase": ""
@@ -169,15 +173,6 @@
     },
     {
       "lines": [
-        214,
-        221
-      ],
-      "sha256": "4c8e45c78f94198c55d990bb21c6af407c92c879ecdcde0a8823acab5dd9bcc3",
-      "quote": "Effective August 1, 2021, in accordance with SAM Section 4117.1 and Management Memo (MM) 21-07 policies, state employees are required to provide the corresponding Reason Code Justification(s) below when booking a non-compliance airfare: • Flight selected is a non-contracted/non-preferred carrier. • Flight selected is a refundable fare. • Domestic flight(s) is booked less than 7 days in advance. • International flight(s) is booked less than 30 days in advance.",
-      "why": "reason code justifications: non-contracted carrier, refundable, short-notice bookings"
-    },
-    {
-      "lines": [
         249,
         252
       ],
@@ -196,5 +191,5 @@
       "why": "how to book abroad, not which fare"
     }
   ],
-  "design_notes": "Booked November 23 for December 23: 30 calendar days, not less than 30 (221): no short-notice justification. WestJet lands 16:00, after the 15:30 limit; Air Canada's non-refundable 29900 is below United's 38900 contract fare (167-168) and is the lowest cost airfare that works; Air Canada is not the contract carrier (218)."
+  "design_notes": "Booked November 23 for December 23: 30 calendar days, not less than 30 (221): no short-notice justification. WestJet lands 16:00, after the 15:30 limit; United's own non-refundable 29900 is below its 38900 contract fare (167-168) and is the lowest cost airfare that works (Air Canada's 31900 is dearer). United is the contract carrier, so no non-contracted-carrier justification (218) is involved."
 }

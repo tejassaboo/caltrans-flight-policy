@@ -2,7 +2,8 @@
   "id": "elkhorn-reed",
   "category": "easy",
   "overlays": [
-    "multi_leg"
+    "multi_leg",
+    "date_arithmetic"
   ],
   "twin_of": "",
   "twin_fact": "",
@@ -21,7 +22,7 @@
     "destination": "SFO",
     "destination_region": "California",
     "travel_date": "2026-12-15",
-    "booking_date": "2026-11-23",
+    "booking_date": "2026-12-10",
     "purpose": "Asset management training, Oakland, from December 16",
     "purpose_kind": "TRAINING",
     "must_arrive_by": "",
@@ -125,12 +126,9 @@
       "ECONOMY"
     ],
     "reason_codes": [
-      "ALTERNATE_ROUTE_WITHIN_MARGIN",
-      "COST_SAVINGS",
-      "LOWEST_FARE",
-      "NON_CONTRACT_CARRIER_JUSTIFIED",
-      "NON_REFUNDABLE_BELOW_CONTRACT_FARE",
-      "SOUTHWEST_IN_STATE_FARE"
+      "ADVANCE_PURCHASE_TOO_LATE",
+      "DOMESTIC_SHORT_NOTICE_JUSTIFIED",
+      "NON_CONTRACT_CARRIER_JUSTIFIED"
     ],
     "approvers": [
       "APPOINTING_AUTHORITY",
@@ -181,6 +179,15 @@
       "sha256": "ab7ad8deb1d78fb658e63cef6018e8ea3e4a3716a31af9704ae2b3fe7f64f4df",
       "quote": "Routing Options - Consider taking flights that include stops as long as the layovers do not significantly impact business or delay travel times.",
       "why": "connections as long as the layovers do not significantly delay the trip"
+    },
+    {
+      "lines": [
+        214,
+        221
+      ],
+      "sha256": "4c8e45c78f94198c55d990bb21c6af407c92c879ecdcde0a8823acab5dd9bcc3",
+      "quote": "Effective August 1, 2021, in accordance with SAM Section 4117.1 and Management Memo (MM) 21-07 policies, state employees are required to provide the corresponding Reason Code Justification(s) below when booking a non-compliance airfare: • Flight selected is a non-contracted/non-preferred carrier. • Flight selected is a refundable fare. • Domestic flight(s) is booked less than 7 days in advance. • International flight(s) is booked less than 30 days in advance.",
+      "why": "reason code justifications: non-contracted carrier, refundable, short-notice bookings"
     }
   ],
   "distractors": [
@@ -193,5 +200,5 @@
       "why": "a Southwest refundable fare, not offered here"
     }
   ],
-  "design_notes": "In-state: lines 183-185 allow Southwest's non-refundable fare, which is also below the 15400 contract fare (167-168) and the lowest cost airfare. The traveller accepts the connection and the training is the next day."
+  "design_notes": "In-state: lines 183-185 allow Southwest's non-refundable fare, which is also below the 15400 contract fare (167-168) and the lowest cost airfare. The traveller accepts the connection and the training is the next day. Booked December 10 for December 15: 5 days, less than 7 (220), and Concur asks for the justification before it books (224-226), so the reason given is a justification this booking needs: short notice, or Southwest as a non-contracted carrier (218)."
 }

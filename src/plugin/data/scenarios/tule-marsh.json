@@ -113,7 +113,8 @@
   "expected": {
     "decision": "BOOK",
     "offer_slots": [
-      "as-controlled"
+      "as-controlled",
+      "wn-saver"
     ],
     "cabins": [
       "ECONOMY"
@@ -121,7 +122,9 @@
     "reason_codes": [
       "ADVANCE_PURCHASE_TOO_LATE",
       "DOMESTIC_SHORT_NOTICE_JUSTIFIED",
+      "LOWEST_FARE",
       "REFUNDABLE_FARE_JUSTIFIED",
+      "SOUTHWEST_IN_STATE_FARE",
       "STATE_CONTRACT_FARE"
     ],
     "approvers": [
@@ -130,6 +133,7 @@
       "SUPERVISOR"
     ],
     "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
       "NON_REFUNDABLE_AIRFARE",
       "REASON_CODE_JUSTIFICATIONS",
       "REFUNDABLE_AIRFARE"
@@ -172,6 +176,24 @@
       "sha256": "4bb9851502ab06fdc79282054155ebbe07ca59720ee349739105b948445f60d2",
       "quote": "The Department of General Services (DGS) has contracted with various airlines for discounted airfare. These fares are available through the Department's Travel Agency for refundable in-state, out-of-state and international flights. Cost savings are achieved with these discounted fares, as they are fully refundable and for travel in either direction of the city pair. See the contract Airline rates within California, Out-of-State, and International for more information.",
       "why": "DGS contracted refundable fares for in-state, out-of-state and international city pairs"
+    },
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        183,
+        185
+      ],
+      "sha256": "4a642f8a21d70d8cc4eb52b1020a80d31566ad6a000d53ef541c40229a30a92f",
+      "quote": "In-State Travel: Travelers may purchase non-refundable airfare for Southwest Airlines (\"Wanna Get Away\" fare) as the carrier offers the most flexibility in changing non-refundable flight reservations.",
+      "why": "in-state: non-refundable Southwest 'Wanna Get Away' fares"
     }
   ],
   "distractors": [
@@ -184,5 +206,5 @@
       "why": "change penalties after booking, not the fare choice"
     }
   ],
-  "design_notes": "Example 1 of the reason-code section (231-234) names a refundable fare chosen for a short-notice assignment, documented by an email, as a justification; lines 161-162 put non-refundable fares first only when the dates are fixed. The traveller asks for refundable: the lowest refundable fare is the capacity-controlled contract fare. Booked a day ahead, so the short-notice code (220) applies too. Southwest is cheaper but declined as asked."
+  "design_notes": "Example 1 of the reason-code section (231-234) names a refundable fare chosen for a short-notice assignment, documented by an email, as a justification; lines 161-162 put non-refundable fares first only when the dates are fixed. The traveller asks for refundable: the lowest refundable fare is the capacity-controlled contract fare. Booked a day ahead, so the short-notice code (220) applies too. Booking Southwest instead is defensible as well (audit): lines 136-137 ask for the lowest cost airfare whenever possible and lines 183-185 call Southwest the most flexible carrier for changes, while the chapter never requires a refundable fare; that booking declines the request on the lowest-fare ground (LOWEST_FARE, SOUTHWEST_IN_STATE_FARE)."
 }
