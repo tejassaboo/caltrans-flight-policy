@@ -1,0 +1,189 @@
+{
+  "id": "cypress-lark",
+  "category": "easy",
+  "overlays": [
+    "upgrade_not_taken"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please book me business class from San Francisco to London on January 12 for the international road safety conference; it's a long trip. If business isn't allowed, book what the policy allows; I have to be at the conference, which opens on the 14th.",
+  "trip": {
+    "traveller_name": "Priya Raman",
+    "traveller_title": "Senior Transportation Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 4 office, Oakland, CA",
+    "residence": "Oakland, CA",
+    "on_telework": false,
+    "origin": "SFO",
+    "destination": "LHR",
+    "destination_region": "United Kingdom",
+    "travel_date": "2027-01-12",
+    "booking_date": "2026-11-23",
+    "purpose": "International road safety conference, London, January 14-16",
+    "purpose_kind": "CONFERENCE",
+    "must_arrive_by": "",
+    "requested_cabin": "BUSINESS",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "United Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 118000
+      },
+      {
+        "carrier": "United Airlines",
+        "kind": "YCAL",
+        "fare_cents": 196000
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "SFO",
+        "destination": "LHR",
+        "date": "2027-01-12",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "ua": {
+            "carrier": "UA",
+            "depart": "13:30"
+          },
+          "ba": {
+            "carrier": "BA",
+            "depart": "16:40"
+          }
+        },
+        "offers": [
+          {
+            "slot": "ua-controlled",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 118000,
+            "refundable": true
+          },
+          {
+            "slot": "ua-ycal",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 196000,
+            "refundable": true
+          },
+          {
+            "slot": "ua-business",
+            "flight": "ua",
+            "cabin": "BUSINESS",
+            "fare_cents": 540000
+          },
+          {
+            "slot": "ba-saver",
+            "flight": "ba",
+            "cabin": "ECONOMY",
+            "fare_cents": 84000
+          },
+          {
+            "slot": "ba-business",
+            "flight": "ba",
+            "cabin": "BUSINESS",
+            "fare_cents": 498000
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "ba-saver"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "UPGRADE_NOT_ELIGIBLE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "RESOURCE_AND_INNOVATION_DIVISION",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "INTERNATIONAL_AIRFARE",
+      "NON_REFUNDABLE_AIRFARE",
+      "OUT_OF_STATE_APPROVAL",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        167,
+        168
+      ],
+      "sha256": "ef2aad7b8c0ae88c959dc5cdac5f6e2533f69c3d32190bd560328622cefe887c",
+      "quote": "Non-refundable airfare may be purchased through the Department's Travel Agency if the airfare is less than the DGS contracted refundable rate.",
+      "why": "non-refundable only if less than the DGS contracted refundable rate"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        254,
+        257
+      ],
+      "quote": "state employees are encouraged to make their reservations via telephonic reservation",
+      "why": "how to book abroad, not which fare"
+    }
+  ],
+  "design_notes": "The chapter has no cabin rule at all, and lines 136-137 require the lowest cost airfare: the BA economy fare, non-refundable and below United's contract fare (167-168). The business request is declined on the lowest-fare rule itself, so LOWEST_FARE stands beside UPGRADE_NOT_ELIGIBLE. Booked 50 days ahead (no 30-day code)."
+}

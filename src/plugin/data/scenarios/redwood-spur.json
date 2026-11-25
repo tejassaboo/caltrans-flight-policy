@@ -1,0 +1,202 @@
+{
+  "id": "redwood-spur",
+  "category": "multi_rule",
+  "overlays": [
+    "multi_leg",
+    "dearer_option"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please book my flight from Los Angeles to Seattle on December 16. The design review starts at 1 p.m. that day.",
+  "trip": {
+    "traveller_name": "Samuel Adeyemi",
+    "traveller_title": "Transportation Engineer (Civil)",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "SEA",
+    "destination_region": "Washington",
+    "travel_date": "2026-12-16",
+    "booking_date": "2026-11-23",
+    "purpose": "Ferry terminal design review, Seattle, 13:00",
+    "purpose_kind": "MEETING",
+    "must_arrive_by": "2026-12-16 12:30",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 16900
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 33800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "SEA",
+        "date": "2026-12-16",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "via": {
+            "carrier": "AS",
+            "depart": "06:00",
+            "via": [
+              "SFO"
+            ],
+            "minutes": [
+              75,
+              110
+            ],
+            "layovers": [
+              230
+            ]
+          },
+          "direct": {
+            "carrier": "AS",
+            "depart": "09:00",
+            "minutes": [
+              170
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "as-connect",
+            "flight": "via",
+            "cabin": "ECONOMY",
+            "fare_cents": 12900
+          },
+          {
+            "slot": "as-controlled",
+            "flight": "direct",
+            "cabin": "ECONOMY",
+            "fare_cents": 16900,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "direct",
+            "cabin": "ECONOMY",
+            "fare_cents": 33800,
+            "refundable": true
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "as-controlled"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "CAPACITY_CONTROLLED_FARE_AVAILABLE",
+      "LOWEST_FARE",
+      "REFUNDABLE_FARE_JUSTIFIED",
+      "STATE_CONTRACT_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "RESOURCE_AND_INNOVATION_DIVISION",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE",
+      "OUT_OF_STATE_APPROVAL",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        174,
+        175
+      ],
+      "sha256": "ab7ad8deb1d78fb658e63cef6018e8ea3e4a3716a31af9704ae2b3fe7f64f4df",
+      "quote": "Routing Options - Consider taking flights that include stops as long as the layovers do not significantly impact business or delay travel times.",
+      "why": "connections as long as the layovers do not significantly delay the trip"
+    },
+    {
+      "lines": [
+        194,
+        199
+      ],
+      "sha256": "4bb9851502ab06fdc79282054155ebbe07ca59720ee349739105b948445f60d2",
+      "quote": "The Department of General Services (DGS) has contracted with various airlines for discounted airfare. These fares are available through the Department's Travel Agency for refundable in-state, out-of-state and international flights. Cost savings are achieved with these discounted fares, as they are fully refundable and for travel in either direction of the city pair. See the contract Airline rates within California, Out-of-State, and International for more information.",
+      "why": "DGS contracted refundable fares for in-state, out-of-state and international city pairs"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        84,
+        85
+      ],
+      "quote": "Distance to be traveled.",
+      "why": "choosing a mode, not a fare"
+    }
+  ],
+  "design_notes": "The cheaper connection lands 12:55, after the 12:30 limit: its layover impacts the business (174-175). The nonstop's capacity-controlled contract fare, landing 11:50, is the lowest cost airfare that works."
+}

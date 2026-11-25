@@ -1,0 +1,16 @@
+{
+  "id": "caltrans-flight-policy",
+  "name": "Caltrans Commercial Air Travel Flight Policy",
+  "slug": "caltrans-ch15",
+  "title": "Caltrans Accounting Manual, Chapter 15 - Transportation (05/14/24)",
+  "frozen_file": "caltrans-ch15_policy.txt",
+  "sha256": "bad50764cd4fede3ec6dd1dbbe390fcec7217107d1d94dac2ee2e3af3ade17ef",
+  "raw_pdf_sha256": "03bce487bb873c854677362f71c0d55b0b5e2d021a6b80c306b9c9c417678f25",
+  "words": 10950,
+  "lines": 1336,
+  "source": "https://www.dot.ca.gov/-/media/dot-media/programs/accounting/documents/ch15-transportation-051424-a11y.pdf",
+  "frozen_on": "2026-11-24",
+  "scenario_count": 32,
+  "currency": "USD",
+  "background_offers": 0
+}

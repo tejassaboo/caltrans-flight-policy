@@ -1,0 +1,193 @@
+{
+  "id": "poppy-ledge",
+  "category": "multi_rule",
+  "overlays": [
+    "upgrade_not_taken"
+  ],
+  "twin_of": "fennel-bluff",
+  "twin_fact": "capacity-controlled seats sold out or available",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please book me the YCAL fare from San Francisco to Seattle on December 11; I like the unrestricted ticket. If that isn't allowed, book what the policy allows; the meeting is the next morning.",
+  "trip": {
+    "traveller_name": "Rosa Delgado",
+    "traveller_title": "Maintenance Area Superintendent",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 4 office, Oakland, CA",
+    "residence": "Oakland, CA",
+    "on_telework": false,
+    "origin": "SFO",
+    "destination": "SEA",
+    "destination_region": "Washington",
+    "travel_date": "2026-12-11",
+    "booking_date": "2026-11-23",
+    "purpose": "Pacific states maintenance peer exchange, Seattle, December 12",
+    "purpose_kind": "MEETING",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "YCAL",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 16900
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 33800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "SFO",
+        "destination": "SEA",
+        "date": "2026-12-11",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "am": {
+            "carrier": "AS",
+            "depart": "07:30"
+          },
+          "dl": {
+            "carrier": "DL",
+            "depart": "09:00"
+          },
+          "pm": {
+            "carrier": "AS",
+            "depart": "12:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "as-controlled",
+            "flight": "am",
+            "cabin": "ECONOMY",
+            "fare_cents": 16900,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "am",
+            "cabin": "ECONOMY",
+            "fare_cents": 33800,
+            "refundable": true
+          },
+          {
+            "slot": "dl-saver",
+            "flight": "dl",
+            "cabin": "ECONOMY",
+            "fare_cents": 36900
+          },
+          {
+            "slot": "as-saver",
+            "flight": "pm",
+            "cabin": "ECONOMY",
+            "fare_cents": 35900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "as-controlled"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "CAPACITY_CONTROLLED_FARE_AVAILABLE",
+      "UPGRADE_NOT_ELIGIBLE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "RESOURCE_AND_INNOVATION_DIVISION",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        203,
+        207
+      ],
+      "sha256": "56278ebb112fc6726ab574eb6e1e3265b349d14b12734d2ce0496c29b133c698",
+      "quote": "YCAL Contract Airfare: Unrestricted airfare with last seat availability. Capacity Controlled Contract Airfare: Capacity controlled as a limited number of seats have been specifically set aside at these rates. These fares are less expensive than YCAL fares and should be used when seats are available. The fares can be upgraded to YCAL when necessary.",
+      "why": "capacity-controlled contract fares before YCAL when seats are available"
+    },
+    {
+      "lines": [
+        194,
+        199
+      ],
+      "sha256": "4bb9851502ab06fdc79282054155ebbe07ca59720ee349739105b948445f60d2",
+      "quote": "The Department of General Services (DGS) has contracted with various airlines for discounted airfare. These fares are available through the Department's Travel Agency for refundable in-state, out-of-state and international flights. Cost savings are achieved with these discounted fares, as they are fully refundable and for travel in either direction of the city pair. See the contract Airline rates within California, Out-of-State, and International for more information.",
+      "why": "DGS contracted refundable fares for in-state, out-of-state and international city pairs"
+    },
+    {
+      "lines": [
+        186,
+        187
+      ],
+      "sha256": "0561a676ac069d02de90b594c53dde2ff04fe765343cd87473a6c30f888368b4",
+      "quote": "Out-of-State Travel: Non-refundable airfare from any carrier is allowed if the fare is less costly than the out-of-state contracted airfare.",
+      "why": "out-of-state: non-refundable from any carrier if less costly than the contract fare"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        206,
+        207
+      ],
+      "quote": "The fares can be upgraded to YCAL when necessary.",
+      "why": "an upgrade only when necessary"
+    }
+  ],
+  "design_notes": "Capacity-controlled seats are available at 16900, and lines 204-207 say they should be used before YCAL; nothing makes the YCAL upgrade necessary. The request is declined on that contract-fare rule, so LOWEST_FARE is not accepted."
+}

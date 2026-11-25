@@ -1,0 +1,202 @@
+{
+  "id": "manzanita-pool",
+  "category": "boundary_twin",
+  "overlays": [
+    "date_arithmetic",
+    "month_end",
+    "dearer_option"
+  ],
+  "twin_of": "nopal-crest",
+  "twin_fact": "booked November 24 or November 23 for a December 23 flight (29 or 30 days ahead)",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please book my flight from San Francisco to Vancouver on December 23 for the cross-border freight corridor meeting at 4 p.m. that day.",
+  "trip": {
+    "traveller_name": "Owen Fitzgerald",
+    "traveller_title": "Transportation Planner",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 4 office, Oakland, CA",
+    "residence": "Oakland, CA",
+    "on_telework": false,
+    "origin": "SFO",
+    "destination": "YVR",
+    "destination_region": "Canada",
+    "travel_date": "2026-12-23",
+    "booking_date": "2026-11-24",
+    "purpose": "Cross-border freight corridor meeting, Vancouver, 16:00",
+    "purpose_kind": "MEETING",
+    "must_arrive_by": "2026-12-23 15:30",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "United Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 38900
+      },
+      {
+        "carrier": "United Airlines",
+        "kind": "YCAL",
+        "fare_cents": 71000
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "SFO",
+        "destination": "YVR",
+        "date": "2026-12-23",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "ac": {
+            "carrier": "AC",
+            "depart": "08:00"
+          },
+          "ua": {
+            "carrier": "UA",
+            "depart": "09:00"
+          },
+          "ws": {
+            "carrier": "WS",
+            "depart": "14:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "ac-saver",
+            "flight": "ac",
+            "cabin": "ECONOMY",
+            "fare_cents": 29900
+          },
+          {
+            "slot": "ua-controlled",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 38900,
+            "refundable": true
+          },
+          {
+            "slot": "ua-ycal",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 71000,
+            "refundable": true
+          },
+          {
+            "slot": "ws-saver",
+            "flight": "ws",
+            "cabin": "ECONOMY",
+            "fare_cents": 24900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "ac-saver"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "ADVANCE_PURCHASE_TOO_LATE",
+      "INTERNATIONAL_SHORT_NOTICE_JUSTIFIED",
+      "LOWEST_FARE",
+      "NON_CONTRACT_CARRIER_JUSTIFIED",
+      "NON_REFUNDABLE_BELOW_CONTRACT_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "RESOURCE_AND_INNOVATION_DIVISION",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "INTERNATIONAL_AIRFARE",
+      "NON_REFUNDABLE_AIRFARE",
+      "OUT_OF_STATE_APPROVAL",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        167,
+        168
+      ],
+      "sha256": "ef2aad7b8c0ae88c959dc5cdac5f6e2533f69c3d32190bd560328622cefe887c",
+      "quote": "Non-refundable airfare may be purchased through the Department's Travel Agency if the airfare is less than the DGS contracted refundable rate.",
+      "why": "non-refundable only if less than the DGS contracted refundable rate"
+    },
+    {
+      "lines": [
+        214,
+        221
+      ],
+      "sha256": "4c8e45c78f94198c55d990bb21c6af407c92c879ecdcde0a8823acab5dd9bcc3",
+      "quote": "Effective August 1, 2021, in accordance with SAM Section 4117.1 and Management Memo (MM) 21-07 policies, state employees are required to provide the corresponding Reason Code Justification(s) below when booking a non-compliance airfare: • Flight selected is a non-contracted/non-preferred carrier. • Flight selected is a refundable fare. • Domestic flight(s) is booked less than 7 days in advance. • International flight(s) is booked less than 30 days in advance.",
+      "why": "reason code justifications: non-contracted carrier, refundable, short-notice bookings"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        254,
+        257
+      ],
+      "quote": "state employees are encouraged to make their reservations via telephonic reservation",
+      "why": "how to book abroad, not which fare"
+    }
+  ],
+  "design_notes": "Booked November 24 for December 23: 29 calendar days, less than 30 (221), so an international short-notice justification applies. "
+}

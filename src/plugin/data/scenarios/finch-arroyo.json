@@ -1,0 +1,173 @@
+{
+  "id": "finch-arroyo",
+  "category": "flag",
+  "overlays": [
+    "approval_required"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [
+    "agate-cove",
+    "bodega-fern"
+  ],
+  "ambiguity_note": "none: the out-of-state approval is pending, not unclear",
+  "request": "Please book my flight from Los Angeles to Denver on December 15 for the bridge inspection standards conference. It starts the next morning.",
+  "trip": {
+    "traveller_name": "Victor Alvarez",
+    "traveller_title": "Bridge Inspector",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "DEN",
+    "destination_region": "Colorado",
+    "travel_date": "2026-12-15",
+    "booking_date": "2026-11-23",
+    "purpose": "Bridge inspection standards conference, Denver, from December 16",
+    "purpose_kind": "CONFERENCE",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "United Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 21900
+      },
+      {
+        "carrier": "United Airlines",
+        "kind": "YCAL",
+        "fare_cents": 41200
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "PENDING",
+        "date": "2026-11-19"
+      }
+    ],
+    "notes": [
+      "Out-of-state travel request sent through the program's out-of-state travel coordinator on 2026-11-19; no decision yet."
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "DEN",
+        "date": "2026-12-15",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "ua": {
+            "carrier": "UA",
+            "depart": "07:00"
+          },
+          "wn": {
+            "carrier": "WN",
+            "depart": "09:20"
+          }
+        },
+        "offers": [
+          {
+            "slot": "ua-controlled",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 21900,
+            "refundable": true
+          },
+          {
+            "slot": "ua-ycal",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 41200,
+            "refundable": true
+          },
+          {
+            "slot": "ua-saver",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 23900
+          },
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 16400
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "FLAG_FOR_APPROVAL",
+    "offer_slots": [
+      "wn-saver"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "APPROVAL_REQUIRED"
+    ],
+    "approvers": [
+      "NOT_NAMED",
+      "PROGRAM_TRAVEL_COORDINATOR",
+      "RESOURCE_AND_INNOVATION_DIVISION"
+    ],
+    "clauses": [
+      "OUT_OF_STATE_APPROVAL"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    },
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        186,
+        187
+      ],
+      "sha256": "0561a676ac069d02de90b594c53dde2ff04fe765343cd87473a6c30f888368b4",
+      "quote": "Out-of-State Travel: Non-refundable airfare from any carrier is allowed if the fare is less costly than the out-of-state contracted airfare.",
+      "why": "out-of-state: non-refundable from any carrier if less costly than the contract fare"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Lines 248-252: out-of-state travel goes through an approval process administered by the Division of Resource and Innovation; the request is still pending. Hold the fare the rules give (Southwest, below the contract fare)."
+}

@@ -1,0 +1,197 @@
+{
+  "id": "elkhorn-reed",
+  "category": "easy",
+  "overlays": [
+    "multi_leg"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please get me from San Diego to San Francisco on December 15 for the asset management training that starts the next morning. Connecting is fine with me.",
+  "trip": {
+    "traveller_name": "Aaliyah Brooks",
+    "traveller_title": "Transportation Engineer (Electrical)",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 11 office, San Diego, CA",
+    "residence": "San Diego, CA",
+    "on_telework": false,
+    "origin": "SAN",
+    "destination": "SFO",
+    "destination_region": "California",
+    "travel_date": "2026-12-15",
+    "booking_date": "2026-11-23",
+    "purpose": "Asset management training, Oakland, from December 16",
+    "purpose_kind": "TRAINING",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": true,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 15400
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 29800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "SAN",
+        "destination": "SFO",
+        "date": "2026-12-15",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "wn": {
+            "carrier": "WN",
+            "depart": "07:10",
+            "via": [
+              "LAS"
+            ],
+            "layovers": [
+              45
+            ]
+          },
+          "as": {
+            "carrier": "AS",
+            "depart": "08:00"
+          },
+          "ua": {
+            "carrier": "UA",
+            "depart": "10:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 11900
+          },
+          {
+            "slot": "as-controlled",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 15400,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 29800,
+            "refundable": true
+          },
+          {
+            "slot": "ua-saver",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 18900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "wn-saver"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "ALTERNATE_ROUTE_WITHIN_MARGIN",
+      "COST_SAVINGS",
+      "LOWEST_FARE",
+      "NON_CONTRACT_CARRIER_JUSTIFIED",
+      "NON_REFUNDABLE_BELOW_CONTRACT_FARE",
+      "SOUTHWEST_IN_STATE_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        183,
+        185
+      ],
+      "sha256": "4a642f8a21d70d8cc4eb52b1020a80d31566ad6a000d53ef541c40229a30a92f",
+      "quote": "In-State Travel: Travelers may purchase non-refundable airfare for Southwest Airlines (\"Wanna Get Away\" fare) as the carrier offers the most flexibility in changing non-refundable flight reservations.",
+      "why": "in-state: non-refundable Southwest 'Wanna Get Away' fares"
+    },
+    {
+      "lines": [
+        167,
+        168
+      ],
+      "sha256": "ef2aad7b8c0ae88c959dc5cdac5f6e2533f69c3d32190bd560328622cefe887c",
+      "quote": "Non-refundable airfare may be purchased through the Department's Travel Agency if the airfare is less than the DGS contracted refundable rate.",
+      "why": "non-refundable only if less than the DGS contracted refundable rate"
+    },
+    {
+      "lines": [
+        174,
+        175
+      ],
+      "sha256": "ab7ad8deb1d78fb658e63cef6018e8ea3e4a3716a31af9704ae2b3fe7f64f4df",
+      "quote": "Routing Options - Consider taking flights that include stops as long as the layovers do not significantly impact business or delay travel times.",
+      "why": "connections as long as the layovers do not significantly delay the trip"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        208,
+        210
+      ],
+      "quote": "The \"Anytime\" fare is fully refundable.",
+      "why": "a Southwest refundable fare, not offered here"
+    }
+  ],
+  "design_notes": "In-state: lines 183-185 allow Southwest's non-refundable fare, which is also below the 15400 contract fare (167-168) and the lowest cost airfare. The traveller accepts the connection and the training is the next day."
+}

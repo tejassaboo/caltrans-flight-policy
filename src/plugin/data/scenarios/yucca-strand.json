@@ -1,0 +1,209 @@
+{
+  "id": "yucca-strand",
+  "category": "distractor",
+  "overlays": [],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Please book me from Los Angeles to Las Vegas on December 7 for the transportation technology expo, which opens the next morning. I'll check two bags of exhibit materials. There's also a Southwest credit on file from a colleague's cancelled trip, if that helps.",
+  "trip": {
+    "traveller_name": "Wei Zhang",
+    "traveller_title": "Information Technology Specialist",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "LAS",
+    "destination_region": "Nevada",
+    "travel_date": "2026-12-07",
+    "booking_date": "2026-11-23",
+    "purpose": "Transportation technology expo, Las Vegas, from December 8 (exhibit booth)",
+    "purpose_kind": "CONFERENCE",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Delta Air Lines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 12900
+      },
+      {
+        "carrier": "Delta Air Lines",
+        "kind": "YCAL",
+        "fare_cents": 24800
+      }
+    ],
+    "ticket_credits": [
+      {
+        "airline": "Southwest Airlines",
+        "amount_cents": 6000,
+        "holder_name": "Jordan Price",
+        "usable_through": "2027-03-31"
+      }
+    ],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": [
+      "The traveller will check two bags of exhibit materials."
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "LAS",
+        "date": "2026-12-07",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "wn": {
+            "carrier": "WN",
+            "depart": "08:00"
+          },
+          "dl": {
+            "carrier": "DL",
+            "depart": "09:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 8900
+          },
+          {
+            "slot": "dl-controlled",
+            "flight": "dl",
+            "cabin": "ECONOMY",
+            "fare_cents": 12900,
+            "refundable": true
+          },
+          {
+            "slot": "dl-ycal",
+            "flight": "dl",
+            "cabin": "ECONOMY",
+            "fare_cents": 24800,
+            "refundable": true
+          },
+          {
+            "slot": "dl-saver",
+            "flight": "dl",
+            "cabin": "ECONOMY",
+            "fare_cents": 11900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "wn-saver"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "NON_CONTRACT_CARRIER_JUSTIFIED",
+      "NON_REFUNDABLE_BELOW_CONTRACT_FARE",
+      "UNUSED_TICKET_CREDIT_APPLIED"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "RESOURCE_AND_INNOVATION_DIVISION",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE",
+      "OUT_OF_STATE_APPROVAL",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        186,
+        187
+      ],
+      "sha256": "0561a676ac069d02de90b594c53dde2ff04fe765343cd87473a6c30f888368b4",
+      "quote": "Out-of-State Travel: Non-refundable airfare from any carrier is allowed if the fare is less costly than the out-of-state contracted airfare.",
+      "why": "out-of-state: non-refundable from any carrier if less costly than the contract fare"
+    },
+    {
+      "lines": [
+        144,
+        148
+      ],
+      "sha256": "b858f1f94c9f43352a0f08a95aa07b1b8d824ccba0a8ccd192894611d796d47b",
+      "quote": "• Employees are encouraged to utilize the Southwest Universal Air Travel Plan (UATP) to purchase a future Southwest flight with the Unused Ticket Credits (UTCs) first prior to billing the Department when making the reservation for business travel through Concur. Any employee may use the ticket credits whether they have a ticket credit in their name or not. To use",
+      "why": "Southwest unused ticket credits first, usable by any employee"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        262,
+        266
+      ],
+      "quote": "The State's policy is to only pay for the cost of the ticket and one bag per traveler.",
+      "why": "bag fees are claimed after the trip; they do not change the ticket"
+    },
+    {
+      "lines": [
+        266,
+        267
+      ],
+      "quote": "For travelers requesting reimbursement for more than one bag, a justification",
+      "why": "the second bag needs a justification on the claim, not a different flight"
+    }
+  ],
+  "design_notes": "The bag rule (262-271) pays one bag and asks a justification for more on the claim; it does not change the ticket. Southwest's 8900 is below Delta's 12900 contract fare (186-187) and the lowest cost airfare; the colleague's Southwest credit can be used by any employee (144-148)."
+}

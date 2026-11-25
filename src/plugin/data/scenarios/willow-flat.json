@@ -1,0 +1,182 @@
+{
+  "id": "willow-flat",
+  "category": "distractor",
+  "overlays": [
+    "dearer_option"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I'm booking this one later than I'd like. Please get me from Los Angeles to Denver on December 4; the district coordination meeting starts at 10 a.m. Denver time.",
+  "trip": {
+    "traveller_name": "Isabel Navarro",
+    "traveller_title": "Office Chief, Traffic Operations",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "DEN",
+    "destination_region": "Colorado",
+    "travel_date": "2026-12-04",
+    "booking_date": "2026-11-23",
+    "purpose": "Multi-state traffic operations coordination meeting, Denver, 10:00",
+    "purpose_kind": "MEETING",
+    "must_arrive_by": "2026-12-04 09:30",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "United Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 21900
+      },
+      {
+        "carrier": "United Airlines",
+        "kind": "YCAL",
+        "fare_cents": 41200
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "DEN",
+        "date": "2026-12-04",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "ua": {
+            "carrier": "UA",
+            "depart": "06:00"
+          },
+          "wn": {
+            "carrier": "WN",
+            "depart": "07:30"
+          }
+        },
+        "offers": [
+          {
+            "slot": "ua-saver",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 17900
+          },
+          {
+            "slot": "ua-controlled",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 21900,
+            "refundable": true
+          },
+          {
+            "slot": "ua-ycal",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 41200,
+            "refundable": true
+          },
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 14900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "ua-saver"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "NON_REFUNDABLE_BELOW_CONTRACT_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "RESOURCE_AND_INNOVATION_DIVISION",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE",
+      "OUT_OF_STATE_APPROVAL",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        186,
+        187
+      ],
+      "sha256": "0561a676ac069d02de90b594c53dde2ff04fe765343cd87473a6c30f888368b4",
+      "quote": "Out-of-State Travel: Non-refundable airfare from any carrier is allowed if the fare is less costly than the out-of-state contracted airfare.",
+      "why": "out-of-state: non-refundable from any carrier if less costly than the contract fare"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        170,
+        171
+      ],
+      "quote": "Non-refundable fares are typically lower in price when reservations are made at least 14 days in advance.",
+      "why": "a cost-saving tip, not a bar on later non-refundable fares"
+    }
+  ],
+  "design_notes": "Booked 11 days ahead. The 14-day line (170-171) is a cost-saving tip, not a rule, and the domestic reason code is for less than 7 days (220). Southwest lands 10:40, after the 09:30 limit; United's non-refundable 17900 is below its 21900 contract fare (186-187) and the lowest cost airfare that works."
+}

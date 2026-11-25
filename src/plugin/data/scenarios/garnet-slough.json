@@ -1,0 +1,192 @@
+{
+  "id": "garnet-slough",
+  "category": "boundary_twin",
+  "overlays": [],
+  "twin_of": "heron-quay",
+  "twin_fact": "Delta's non-refundable fare 16899 or 16900 cents against the 16900 contract fare",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I fly Delta for the miles; please put me on Delta from Los Angeles to Seattle on December 14. If Delta isn't allowed, book what the policy allows; I have to be at the conference, which starts the next morning.",
+  "trip": {
+    "traveller_name": "Grace Kim",
+    "traveller_title": "Environmental Planner",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "SEA",
+    "destination_region": "Washington",
+    "travel_date": "2026-12-14",
+    "booking_date": "2026-11-23",
+    "purpose": "Western transportation environmental conference, Seattle, from December 15",
+    "purpose_kind": "CONFERENCE",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "Delta Air Lines",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 16900
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 33800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "SEA",
+        "date": "2026-12-14",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "dl": {
+            "carrier": "DL",
+            "depart": "07:00"
+          },
+          "as": {
+            "carrier": "AS",
+            "depart": "08:15"
+          }
+        },
+        "offers": [
+          {
+            "slot": "dl-saver",
+            "flight": "dl",
+            "cabin": "ECONOMY",
+            "fare_cents": 16899
+          },
+          {
+            "slot": "as-controlled",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 16900,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 33800,
+            "refundable": true
+          },
+          {
+            "slot": "as-saver",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 18400
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "dl-saver"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "LOYALTY_PROGRAM_PREFERENCE",
+      "NON_CONTRACT_CARRIER_JUSTIFIED",
+      "NON_REFUNDABLE_BELOW_CONTRACT_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "RESOURCE_AND_INNOVATION_DIVISION",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE",
+      "OUT_OF_STATE_APPROVAL",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        186,
+        187
+      ],
+      "sha256": "0561a676ac069d02de90b594c53dde2ff04fe765343cd87473a6c30f888368b4",
+      "quote": "Out-of-State Travel: Non-refundable airfare from any carrier is allowed if the fare is less costly than the out-of-state contracted airfare.",
+      "why": "out-of-state: non-refundable from any carrier if less costly than the contract fare"
+    },
+    {
+      "lines": [
+        167,
+        168
+      ],
+      "sha256": "ef2aad7b8c0ae88c959dc5cdac5f6e2533f69c3d32190bd560328622cefe887c",
+      "quote": "Non-refundable airfare may be purchased through the Department's Travel Agency if the airfare is less than the DGS contracted refundable rate.",
+      "why": "non-refundable only if less than the DGS contracted refundable rate"
+    },
+    {
+      "lines": [
+        194,
+        199
+      ],
+      "sha256": "4bb9851502ab06fdc79282054155ebbe07ca59720ee349739105b948445f60d2",
+      "quote": "The Department of General Services (DGS) has contracted with various airlines for discounted airfare. These fares are available through the Department's Travel Agency for refundable in-state, out-of-state and international flights. Cost savings are achieved with these discounted fares, as they are fully refundable and for travel in either direction of the city pair. See the contract Airline rates within California, Out-of-State, and International for more information.",
+      "why": "DGS contracted refundable fares for in-state, out-of-state and international city pairs"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        93,
+        95
+      ],
+      "quote": "State employees may use frequent flyer miles and/or points for personal use",
+      "why": "miles may be kept; they do not make a dearer fare allowed"
+    }
+  ],
+  "design_notes": "Delta's non-refundable 16899 is less costly than the 16900 contracted fare (186-187, 'less costly than'): allowed, the lowest cost airfare, and the airline asked for."
+}

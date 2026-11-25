@@ -1,0 +1,196 @@
+{
+  "id": "umber-canyon",
+  "category": "hidden_clause",
+  "overlays": [
+    "outside_air_section"
+  ],
+  "twin_of": "coyote-dell",
+  "twin_fact": "where the teleworker flies: a Phoenix conference or the Oakland headquarters office",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I telework from San Diego. Please book my flight to Phoenix on December 10 for the Southwest transportation safety conference, which starts the next morning.",
+  "trip": {
+    "traveller_name": "Nadia Haddad",
+    "traveller_title": "Traffic Safety Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 4 office, Oakland, CA",
+    "residence": "San Diego, CA",
+    "on_telework": true,
+    "origin": "SAN",
+    "destination": "PHX",
+    "destination_region": "Arizona",
+    "travel_date": "2026-12-10",
+    "booking_date": "2026-11-23",
+    "purpose": "Southwest transportation safety conference, Phoenix, from December 11",
+    "purpose_kind": "CONFERENCE",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "American Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 17900
+      },
+      {
+        "carrier": "American Airlines",
+        "kind": "YCAL",
+        "fare_cents": 33600
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "SAN",
+        "destination": "PHX",
+        "date": "2026-12-10",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "wn": {
+            "carrier": "WN",
+            "depart": "08:00"
+          },
+          "aa": {
+            "carrier": "AA",
+            "depart": "09:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 10900
+          },
+          {
+            "slot": "aa-controlled",
+            "flight": "aa",
+            "cabin": "ECONOMY",
+            "fare_cents": 17900,
+            "refundable": true
+          },
+          {
+            "slot": "aa-ycal",
+            "flight": "aa",
+            "cabin": "ECONOMY",
+            "fare_cents": 33600,
+            "refundable": true
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "wn-saver"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "LOWEST_FARE",
+      "NON_CONTRACT_CARRIER_JUSTIFIED",
+      "NON_REFUNDABLE_BELOW_CONTRACT_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "RESOURCE_AND_INNOVATION_DIVISION",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE",
+      "OUT_OF_STATE_APPROVAL",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        61,
+        65
+      ],
+      "sha256": "c97782f98da0426c4132ff484909ed935321ac262cadbcdf534127011e474944",
+      "quote": "Transportation expenses arising from travel between residence or garage and headquarters are not reimbursable for employees who are on telework status. The telework status do not change the employee's headquarter location. An employee's designated headquarter is established by the appointing power for each state officer and employee.",
+      "why": "telework does not move the headquarters; residence-headquarters travel not reimbursable"
+    },
+    {
+      "lines": [
+        154,
+        159
+      ],
+      "sha256": "2d091759649d3700644b1d8d3611bb5c5355ca66c2d84d3bbee2872669a6b17a",
+      "quote": "• Commercial air flight expenses arising from travel between residence or garage and headquarters are not reimbursable for employees who are on telework status. The telework status do not change the employee's headquarter location. An employee's designated headquarter is established by the appointing power for each state officer and employee.",
+      "why": "no air travel between residence and headquarters on telework status"
+    },
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        186,
+        187
+      ],
+      "sha256": "0561a676ac069d02de90b594c53dde2ff04fe765343cd87473a6c30f888368b4",
+      "quote": "Out-of-State Travel: Non-refundable airfare from any carrier is allowed if the fare is less costly than the out-of-state contracted airfare.",
+      "why": "out-of-state: non-refundable from any carrier if less costly than the contract fare"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        84,
+        85
+      ],
+      "quote": "Distance to be traveled.",
+      "why": "choosing a mode, not a fare"
+    }
+  ],
+  "design_notes": "The telework notes (61-65, 154-159) bar only travel between residence and headquarters; a conference in Phoenix is state business from wherever the trip starts. Southwest's 10900 is below American's 17900 contract fare (186-187) and the lowest cost airfare."
+}

@@ -1,0 +1,199 @@
+{
+  "id": "dune-sparrow",
+  "category": "easy",
+  "overlays": [
+    "dearer_option",
+    "multi_leg"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I have to be at an Oakland hearing that starts at 9:30 a.m. on December 8. Please book my flight up from Los Angeles that morning.",
+  "trip": {
+    "traveller_name": "Tomas Reyes",
+    "traveller_title": "Right of Way Agent",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "SFO",
+    "destination_region": "California",
+    "travel_date": "2026-12-08",
+    "booking_date": "2026-11-23",
+    "purpose": "Eminent domain hearing in Oakland, 09:30",
+    "purpose_kind": "HEARING",
+    "must_arrive_by": "2026-12-08 08:45",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 13900
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 26800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": [
+      "Getting from SFO to the hearing room takes about 45 minutes."
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "SFO",
+        "date": "2026-12-08",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "wn": {
+            "carrier": "WN",
+            "depart": "06:00",
+            "via": [
+              "LAS"
+            ],
+            "layovers": [
+              50
+            ]
+          },
+          "as": {
+            "carrier": "AS",
+            "depart": "06:30"
+          },
+          "ua": {
+            "carrier": "UA",
+            "depart": "07:15"
+          }
+        },
+        "offers": [
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 9900
+          },
+          {
+            "slot": "as-controlled",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 13900,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 26800,
+            "refundable": true
+          },
+          {
+            "slot": "ua-saver",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 15900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "as-controlled"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "CAPACITY_CONTROLLED_FARE_AVAILABLE",
+      "LOWEST_FARE",
+      "NON_REFUNDABLE_NOT_BELOW_CONTRACT_FARE",
+      "REFUNDABLE_FARE_JUSTIFIED",
+      "STATE_CONTRACT_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        194,
+        199
+      ],
+      "sha256": "4bb9851502ab06fdc79282054155ebbe07ca59720ee349739105b948445f60d2",
+      "quote": "The Department of General Services (DGS) has contracted with various airlines for discounted airfare. These fares are available through the Department's Travel Agency for refundable in-state, out-of-state and international flights. Cost savings are achieved with these discounted fares, as they are fully refundable and for travel in either direction of the city pair. See the contract Airline rates within California, Out-of-State, and International for more information.",
+      "why": "DGS contracted refundable fares for in-state, out-of-state and international city pairs"
+    },
+    {
+      "lines": [
+        203,
+        207
+      ],
+      "sha256": "56278ebb112fc6726ab574eb6e1e3265b349d14b12734d2ce0496c29b133c698",
+      "quote": "YCAL Contract Airfare: Unrestricted airfare with last seat availability. Capacity Controlled Contract Airfare: Capacity controlled as a limited number of seats have been specifically set aside at these rates. These fares are less expensive than YCAL fares and should be used when seats are available. The fares can be upgraded to YCAL when necessary.",
+      "why": "capacity-controlled contract fares before YCAL when seats are available"
+    },
+    {
+      "lines": [
+        167,
+        168
+      ],
+      "sha256": "ef2aad7b8c0ae88c959dc5cdac5f6e2533f69c3d32190bd560328622cefe887c",
+      "quote": "Non-refundable airfare may be purchased through the Department's Travel Agency if the airfare is less than the DGS contracted refundable rate.",
+      "why": "non-refundable only if less than the DGS contracted refundable rate"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        178,
+        182
+      ],
+      "quote": "Penalties incurred for flight changes or cancellations may be the responsibility of the employee",
+      "why": "change penalties after booking, not the fare choice"
+    }
+  ],
+  "design_notes": "Southwest via Las Vegas is cheapest but lands 09:05, after the 08:45 limit; United's non-refundable 15900 is above the 13900 contract fare (167-168). The capacity-controlled Alaska fare, landing 07:40, is the lowest cost airfare that works."
+}

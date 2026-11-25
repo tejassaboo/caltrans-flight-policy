@@ -1,0 +1,13 @@
+_ > nanoagent.plugin.v0001.ProductConfig:
+tagline: "One flight request, a state department's real transportation chapter: book it, refuse it, or hold it for sign-off"
+summary: "An agent handles one Caltrans employee's flight request under the Caltrans Accounting Manual, Chapter 15 - Transportation (05/14/24), read verbatim. It reads the trip record (with the city pair's contracted fares), searches a simulated flight world (real airports and airlines, synthetic schedules and fares) and submits a decision with the offer, cabin, reason, approver and section. A deterministic verifier rebuilds the offers and the chapter's answer itself and checks every field. Thirty-two cases cover contract against non-contract airlines, refundable against non-refundable fares to the cent, days booked ahead on both sides of each limit, approvals still pending, personal and telework trips, and the chapter's own unclear words."
+highlights:
+  - "The verbatim chapter: no paraphrase, no rules restated in the task"
+  - "Exact boundaries: a non-refundable fare 1 cent below or equal to the contract fare, 6 against 7 and 29 against 30 days ahead"
+  - "Unclear clauses become holds for approval, each once, with clear twins on both sides"
+  - "Fully offline: a hash-seeded flight world with unguessable offer ids"
+steps:
+  - "Name a case, for example agate-cove, with the traveller's request"
+  - "The agent reads the trip record and searches flights on the trip's route and date"
+  - "It submits BOOK, REFUSE or FLAG_FOR_APPROVAL with the offer, cabin, reason, approver and section"
+  - "The verifier recomputes the chapter's answer and checks every field"

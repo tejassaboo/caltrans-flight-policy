@@ -1,0 +1,197 @@
+{
+  "id": "hazel-kiln",
+  "category": "flag",
+  "overlays": [
+    "unclear_phrase",
+    "multi_leg"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [
+    "quail-hollow",
+    "redwood-spur"
+  ],
+  "ambiguity_note": {
+    "phrase": "as long as the layovers do not significantly impact business or delay travel times",
+    "readings": [
+      "160 added minutes are not a significant delay when the business is the next morning: book the lowest cost airfare, the connection.",
+      "Nearly doubling the travel time is a significant delay: book the nonstop contract fare."
+    ]
+  },
+  "request": "Please book my flight from Los Angeles to Seattle on December 9. The ferry systems workshop is the next morning.",
+  "trip": {
+    "traveller_name": "Teresa Morales",
+    "traveller_title": "Senior Transportation Planner",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "SEA",
+    "destination_region": "Washington",
+    "travel_date": "2026-12-09",
+    "booking_date": "2026-11-23",
+    "purpose": "Ferry systems workshop, Seattle, December 10",
+    "purpose_kind": "TRAINING",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 16900
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 33800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "RESOURCE_AND_INNOVATION_DIVISION",
+        "name": "Division of Resource and Innovation",
+        "subject": "OUT_OF_STATE_TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "SEA",
+        "date": "2026-12-09",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "via": {
+            "carrier": "AS",
+            "depart": "08:00",
+            "via": [
+              "SFO"
+            ],
+            "minutes": [
+              75,
+              110
+            ],
+            "layovers": [
+              145
+            ]
+          },
+          "direct": {
+            "carrier": "AS",
+            "depart": "09:00",
+            "minutes": [
+              170
+            ]
+          }
+        },
+        "offers": [
+          {
+            "slot": "as-connect",
+            "flight": "via",
+            "cabin": "ECONOMY",
+            "fare_cents": 12900
+          },
+          {
+            "slot": "as-controlled",
+            "flight": "direct",
+            "cabin": "ECONOMY",
+            "fare_cents": 16900,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "direct",
+            "cabin": "ECONOMY",
+            "fare_cents": 33800,
+            "refundable": true
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "FLAG_FOR_APPROVAL",
+    "offer_slots": [
+      "as-connect",
+      "as-controlled"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "APPROVAL_REQUIRED",
+      "UNCLEAR_POLICY_TEXT"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NOT_NAMED",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": "as long as the layovers do not significantly impact business or delay travel times"
+  },
+  "must_keep": [
+    {
+      "lines": [
+        174,
+        175
+      ],
+      "sha256": "ab7ad8deb1d78fb658e63cef6018e8ea3e4a3716a31af9704ae2b3fe7f64f4df",
+      "quote": "Routing Options - Consider taking flights that include stops as long as the layovers do not significantly impact business or delay travel times.",
+      "why": "connections as long as the layovers do not significantly delay the trip"
+    },
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        186,
+        187
+      ],
+      "sha256": "0561a676ac069d02de90b594c53dde2ff04fe765343cd87473a6c30f888368b4",
+      "quote": "Out-of-State Travel: Non-refundable airfare from any carrier is allowed if the fare is less costly than the out-of-state contracted airfare.",
+      "why": "out-of-state: non-refundable from any carrier if less costly than the contract fare"
+    },
+    {
+      "lines": [
+        249,
+        252
+      ],
+      "sha256": "7be971a88afec34ab34088e1412b13d15f3db57077c78371ad390137e633a12c",
+      "quote": "The Division of Resource and Innovation is responsible for administering the approval process for out-of-state travel. Employees with questions regarding the approval process should contact their own program's out-of-state travel coordinator.",
+      "why": "the out-of-state travel approval process"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "The connection costs 12900 (below the 16900 contract fare) and lands the evening before the workshop, but takes 330 minutes against the nonstop's 170: whether 160 more minutes 'significantly ... delay travel times' (174-175) is not said."
+}

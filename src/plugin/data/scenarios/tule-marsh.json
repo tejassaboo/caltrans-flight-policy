@@ -1,0 +1,188 @@
+{
+  "id": "tule-marsh",
+  "category": "hidden_clause",
+  "overlays": [
+    "dearer_option",
+    "multi_leg",
+    "date_arithmetic"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Storm damage closed a bridge on Route 1 and I've just been assigned to inspect it in the Bay Area tomorrow. The schedule could shift hour to hour, so please book me a refundable ticket from San Diego to San Francisco for tomorrow, November 24.",
+  "trip": {
+    "traveller_name": "Miguel Santos",
+    "traveller_title": "Bridge Maintenance Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 11 office, San Diego, CA",
+    "residence": "San Diego, CA",
+    "on_telework": false,
+    "origin": "SAN",
+    "destination": "SFO",
+    "destination_region": "California",
+    "travel_date": "2026-11-24",
+    "booking_date": "2026-11-23",
+    "purpose": "Emergency inspection of a storm-damaged bridge, Bay Area",
+    "purpose_kind": "SITE_INSPECTION",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "REFUNDABLE",
+    "connections_ok": true,
+    "plans_fixed": false,
+    "assignment_email_on_file": true,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 15400
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 29800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-23"
+      }
+    ],
+    "notes": [
+      "Email of 2026-11-23 16:10 from the Structures Maintenance manager: inspect the bridge on November 24; the inspection is mission critical and its time may move as crews clear the site."
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "SAN",
+        "destination": "SFO",
+        "date": "2026-11-24",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "wn": {
+            "carrier": "WN",
+            "depart": "07:10",
+            "via": [
+              "LAS"
+            ],
+            "layovers": [
+              45
+            ]
+          },
+          "as": {
+            "carrier": "AS",
+            "depart": "09:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 11900
+          },
+          {
+            "slot": "as-controlled",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 15400,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 29800,
+            "refundable": true
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "as-controlled"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "ADVANCE_PURCHASE_TOO_LATE",
+      "DOMESTIC_SHORT_NOTICE_JUSTIFIED",
+      "REFUNDABLE_FARE_JUSTIFIED",
+      "STATE_CONTRACT_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "NON_REFUNDABLE_AIRFARE",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        231,
+        234
+      ],
+      "sha256": "4512f19d64837c714a0049635960a9ed047d3719f99914ad7ba9bccd8994ab3a",
+      "quote": "Example 1: When selecting a refundable fare due to a short notice/last-minute travel assignment, traveler must retain an email record detailing the assignment and their requirement to travel to fulfill the mission critical task on such short notice.",
+      "why": "a refundable fare for a short-notice assignment, documented by email"
+    },
+    {
+      "lines": [
+        214,
+        221
+      ],
+      "sha256": "4c8e45c78f94198c55d990bb21c6af407c92c879ecdcde0a8823acab5dd9bcc3",
+      "quote": "Effective August 1, 2021, in accordance with SAM Section 4117.1 and Management Memo (MM) 21-07 policies, state employees are required to provide the corresponding Reason Code Justification(s) below when booking a non-compliance airfare: • Flight selected is a non-contracted/non-preferred carrier. • Flight selected is a refundable fare. • Domestic flight(s) is booked less than 7 days in advance. • International flight(s) is booked less than 30 days in advance.",
+      "why": "reason code justifications: non-contracted carrier, refundable, short-notice bookings"
+    },
+    {
+      "lines": [
+        161,
+        162
+      ],
+      "sha256": "09918221fd0a3dccedf9835caeba9757b209eeea2e75f2f7fc306d94c6e58f50",
+      "quote": "Travelers should first consider purchasing a non-refundable fare if the trip dates are fixed and there is a low probability of a change in plans.",
+      "why": "consider a non-refundable fare first when the dates are fixed"
+    },
+    {
+      "lines": [
+        194,
+        199
+      ],
+      "sha256": "4bb9851502ab06fdc79282054155ebbe07ca59720ee349739105b948445f60d2",
+      "quote": "The Department of General Services (DGS) has contracted with various airlines for discounted airfare. These fares are available through the Department's Travel Agency for refundable in-state, out-of-state and international flights. Cost savings are achieved with these discounted fares, as they are fully refundable and for travel in either direction of the city pair. See the contract Airline rates within California, Out-of-State, and International for more information.",
+      "why": "DGS contracted refundable fares for in-state, out-of-state and international city pairs"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        178,
+        182
+      ],
+      "quote": "Penalties incurred for flight changes or cancellations may be the responsibility of the employee",
+      "why": "change penalties after booking, not the fare choice"
+    }
+  ],
+  "design_notes": "Example 1 of the reason-code section (231-234) names a refundable fare chosen for a short-notice assignment, documented by an email, as a justification; lines 161-162 put non-refundable fares first only when the dates are fixed. The traveller asks for refundable: the lowest refundable fare is the capacity-controlled contract fare. Booked a day ahead, so the short-notice code (220) applies too. Southwest is cheaper but declined as asked."
+}

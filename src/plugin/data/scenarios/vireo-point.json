@@ -1,0 +1,196 @@
+{
+  "id": "vireo-point",
+  "category": "hidden_clause",
+  "overlays": [
+    "multi_traveller"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I can't put the armrest down on a standard seat, so I need the seat next to mine as well. My supervisor has approved both reservations. Please book me from Los Angeles to San Francisco on December 11; the meeting is the next morning.",
+  "trip": {
+    "traveller_name": "Robert Castillo",
+    "traveller_title": "Construction Inspector",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "SFO",
+    "destination_region": "California",
+    "travel_date": "2026-12-11",
+    "booking_date": "2026-11-23",
+    "purpose": "Construction claims meeting, Oakland, December 12",
+    "purpose_kind": "MEETING",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": true,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 13900
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 26800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "FIRST_SEAT_RESERVATION",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "EXTRA_SEAT_RESERVATION",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "SFO",
+        "date": "2026-12-11",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "as": {
+            "carrier": "AS",
+            "depart": "10:00"
+          },
+          "ua": {
+            "carrier": "UA",
+            "depart": "12:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "as-controlled",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 13900,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 26800,
+            "refundable": true
+          },
+          {
+            "slot": "ua-saver",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 15900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "BOOK",
+    "offer_slots": [
+      "as-controlled"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "CAPACITY_CONTROLLED_FARE_AVAILABLE",
+      "EXTRA_SEAT_APPROVED",
+      "LOWEST_FARE",
+      "NON_REFUNDABLE_NOT_BELOW_CONTRACT_FARE",
+      "REFUNDABLE_FARE_JUSTIFIED",
+      "STATE_CONTRACT_FARE"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "NON_REFUNDABLE_AIRFARE",
+      "PASSENGERS_OF_SIZE",
+      "REASON_CODE_JUSTIFICATIONS",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        241,
+        245
+      ],
+      "sha256": "be73ad51b30354c0b95a1620c04013ddb4490cd98aa89bd7f21c2abb1eb0803d",
+      "quote": "Employees who are unable to lower the armrests (the definitive boundary between seats) should proactively book an additional seat if needed when making reservations. This will ensure the employee has access to safe and comfortable seating. The additional purchase will be refunded after travel, provided the flight doesn't oversell.",
+      "why": "who books an additional seat"
+    },
+    {
+      "lines": [
+        246,
+        247
+      ],
+      "sha256": "2586086deeb3331acdf17f35f06c0a206770639f039481cc79e43137d461e9bc",
+      "quote": "To request an additional seat, the employee will need to make two reservations, and the supervisor will need to approve both.",
+      "why": "two reservations for an extra seat, both approved by the supervisor"
+    },
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    },
+    {
+      "lines": [
+        194,
+        199
+      ],
+      "sha256": "4bb9851502ab06fdc79282054155ebbe07ca59720ee349739105b948445f60d2",
+      "quote": "The Department of General Services (DGS) has contracted with various airlines for discounted airfare. These fares are available through the Department's Travel Agency for refundable in-state, out-of-state and international flights. Cost savings are achieved with these discounted fares, as they are fully refundable and for travel in either direction of the city pair. See the contract Airline rates within California, Out-of-State, and International for more information.",
+      "why": "DGS contracted refundable fares for in-state, out-of-state and international city pairs"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        178,
+        182
+      ],
+      "quote": "Penalties incurred for flight changes or cancellations may be the responsibility of the employee",
+      "why": "change penalties after booking, not the fare choice"
+    }
+  ],
+  "design_notes": "Passengers of size (241-247): an employee who cannot lower the armrests books an additional seat, with two reservations the supervisor approves; both approvals are on file. The fare for both seats is the lowest cost airfare, the capacity-controlled contract fare (United's 15900 is above it, 167-168)."
+}

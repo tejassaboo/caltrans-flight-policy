@@ -1,0 +1,172 @@
+{
+  "id": "granite-wren",
+  "category": "flag",
+  "overlays": [
+    "approval_required",
+    "multi_traveller"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [
+    "vireo-point",
+    "dune-sparrow"
+  ],
+  "ambiguity_note": "none: the second reservation's approval is pending, not unclear",
+  "request": "I can't put the armrest down on a standard seat, so I need the seat next to mine as well. My supervisor has approved my own reservation and is looking at the second one. Please book me from Los Angeles to San Francisco on December 14; the meeting is the next morning.",
+  "trip": {
+    "traveller_name": "Linda Harper",
+    "traveller_title": "Landscape Architect",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "SFO",
+    "destination_region": "California",
+    "travel_date": "2026-12-14",
+    "booking_date": "2026-11-23",
+    "purpose": "Highway landscaping review, Oakland, December 15",
+    "purpose_kind": "MEETING",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": true,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 13900
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 26800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "FIRST_SEAT_RESERVATION",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      },
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "EXTRA_SEAT_RESERVATION",
+        "status": "PENDING",
+        "date": "2026-11-21"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "SFO",
+        "date": "2026-12-14",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "as": {
+            "carrier": "AS",
+            "depart": "10:00"
+          },
+          "ua": {
+            "carrier": "UA",
+            "depart": "12:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "as-controlled",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 13900,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 26800,
+            "refundable": true
+          },
+          {
+            "slot": "ua-saver",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 15900
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "FLAG_FOR_APPROVAL",
+    "offer_slots": [
+      "as-controlled"
+    ],
+    "cabins": [
+      "ECONOMY"
+    ],
+    "reason_codes": [
+      "APPROVAL_REQUIRED"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "PASSENGERS_OF_SIZE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        246,
+        247
+      ],
+      "sha256": "2586086deeb3331acdf17f35f06c0a206770639f039481cc79e43137d461e9bc",
+      "quote": "To request an additional seat, the employee will need to make two reservations, and the supervisor will need to approve both.",
+      "why": "two reservations for an extra seat, both approved by the supervisor"
+    },
+    {
+      "lines": [
+        241,
+        245
+      ],
+      "sha256": "be73ad51b30354c0b95a1620c04013ddb4490cd98aa89bd7f21c2abb1eb0803d",
+      "quote": "Employees who are unable to lower the armrests (the definitive boundary between seats) should proactively book an additional seat if needed when making reservations. This will ensure the employee has access to safe and comfortable seating. The additional purchase will be refunded after travel, provided the flight doesn't oversell.",
+      "why": "who books an additional seat"
+    },
+    {
+      "lines": [
+        136,
+        137
+      ],
+      "sha256": "dc25e998fc1ddf617a7e37006a2413d9553f8df3b8545dd70d6248e22e7f81c9",
+      "quote": "Travelers must purchase the lowest cost airfare whenever possible",
+      "why": "the lowest cost airfare whenever possible"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Lines 246-247: two reservations, and the supervisor will need to approve both; the second is pending. Hold the lowest cost fare (the capacity-controlled contract fare) for the supervisor."
+}

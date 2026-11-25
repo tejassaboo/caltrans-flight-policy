@@ -1,0 +1,149 @@
+{
+  "id": "dove-terrace",
+  "category": "refusal",
+  "overlays": [
+    "personal_travel",
+    "multi_traveller"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "My husband is coming with me to the Denver conference on December 10. Please book him on my flight from Los Angeles at the state contract rate; we'll pay for his seat.",
+  "trip": {
+    "traveller_name": "Michael Ortega",
+    "traveller_title": "Husband of Marisol Ortega",
+    "passenger": "SPOUSE_OR_FAMILY",
+    "accompanies": "Marisol Ortega, Transportation Engineer (Civil)",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "DEN",
+    "destination_region": "Colorado",
+    "travel_date": "2026-12-10",
+    "booking_date": "2026-11-23",
+    "purpose": "Accompanying his wife to a conference in Denver",
+    "purpose_kind": "PERSONAL",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "United Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 21900
+      },
+      {
+        "carrier": "United Airlines",
+        "kind": "YCAL",
+        "fare_cents": 41200
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [],
+    "notes": [
+      "Marisol Ortega's own ticket is booked separately."
+    ]
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "DEN",
+        "date": "2026-12-10",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "ua": {
+            "carrier": "UA",
+            "depart": "07:00"
+          },
+          "wn": {
+            "carrier": "WN",
+            "depart": "09:20"
+          }
+        },
+        "offers": [
+          {
+            "slot": "ua-controlled",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 21900,
+            "refundable": true
+          },
+          {
+            "slot": "ua-ycal",
+            "flight": "ua",
+            "cabin": "ECONOMY",
+            "fare_cents": 41200,
+            "refundable": true
+          },
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 16400
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "REFUSE",
+    "offer_slots": [],
+    "cabins": [
+      "NONE"
+    ],
+    "reason_codes": [
+      "COMPANION_NOT_COVERED",
+      "CONTRACT_FARE_NOT_FOR_PERSONAL_TRAVEL",
+      "PERSONAL_TRAVEL_NOT_COVERED"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        141,
+        142
+      ],
+      "sha256": "bb708a47084d176ed2299ba91d5de29f91fe0ec337ec548e1a48b209513f2131",
+      "quote": "The use of Concur is restricted to Caltrans employees who must travel on state business. Using the reservation system for personal travel is prohibited.",
+      "why": "the reservation system is for state business; personal travel is prohibited"
+    },
+    {
+      "lines": [
+        211,
+        212
+      ],
+      "sha256": "c3c21832fcfca9a55795799a1842c476b7c8fc440dda00ca50cdf4f7eb353276",
+      "quote": "DGS contracted airfare rates may only be used for state business and are not extended to employees for personal travel.",
+      "why": "contracted rates only for state business, not personal travel"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        93,
+        95
+      ],
+      "quote": "State employees may use frequent flyer miles and/or points for personal use",
+      "why": "miles may be kept; they do not make a dearer fare allowed"
+    }
+  ],
+  "design_notes": "Lines 141-142: the system is for Caltrans employees on state business and personal travel through it is prohibited; lines 211-212: contracted rates are only for state business. A spouse's ticket is personal: buy nothing, whoever pays."
+}

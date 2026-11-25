@@ -1,0 +1,145 @@
+{
+  "id": "basalt-cliff",
+  "category": "refusal",
+  "overlays": [
+    "personal_travel"
+  ],
+  "twin_of": "",
+  "twin_fact": "",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "Can you book me Los Angeles to Las Vegas on December 26 for a family holiday? I'd like the state rate if I can get it.",
+  "trip": {
+    "traveller_name": "Carlos Mendoza",
+    "traveller_title": "Equipment Operator II",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 7 office, Los Angeles, CA",
+    "residence": "Los Angeles, CA",
+    "on_telework": false,
+    "origin": "LAX",
+    "destination": "LAS",
+    "destination_region": "Nevada",
+    "travel_date": "2026-12-26",
+    "booking_date": "2026-11-23",
+    "purpose": "Family holiday in Las Vegas",
+    "purpose_kind": "PERSONAL",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Delta Air Lines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 12900
+      },
+      {
+        "carrier": "Delta Air Lines",
+        "kind": "YCAL",
+        "fare_cents": 24800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "LAX",
+        "destination": "LAS",
+        "date": "2026-12-26",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "wn": {
+            "carrier": "WN",
+            "depart": "09:00"
+          },
+          "dl": {
+            "carrier": "DL",
+            "depart": "10:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 8900
+          },
+          {
+            "slot": "dl-controlled",
+            "flight": "dl",
+            "cabin": "ECONOMY",
+            "fare_cents": 12900,
+            "refundable": true
+          },
+          {
+            "slot": "dl-ycal",
+            "flight": "dl",
+            "cabin": "ECONOMY",
+            "fare_cents": 24800,
+            "refundable": true
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "REFUSE",
+    "offer_slots": [],
+    "cabins": [
+      "NONE"
+    ],
+    "reason_codes": [
+      "CONTRACT_FARE_NOT_FOR_PERSONAL_TRAVEL",
+      "PERSONAL_TRAVEL_NOT_COVERED"
+    ],
+    "approvers": [
+      "NONE"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "REFUNDABLE_AIRFARE"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        141,
+        142
+      ],
+      "sha256": "bb708a47084d176ed2299ba91d5de29f91fe0ec337ec548e1a48b209513f2131",
+      "quote": "The use of Concur is restricted to Caltrans employees who must travel on state business. Using the reservation system for personal travel is prohibited.",
+      "why": "the reservation system is for state business; personal travel is prohibited"
+    },
+    {
+      "lines": [
+        211,
+        212
+      ],
+      "sha256": "c3c21832fcfca9a55795799a1842c476b7c8fc440dda00ca50cdf4f7eb353276",
+      "quote": "DGS contracted airfare rates may only be used for state business and are not extended to employees for personal travel.",
+      "why": "contracted rates only for state business, not personal travel"
+    }
+  ],
+  "distractors": [
+    {
+      "lines": [
+        93,
+        95
+      ],
+      "quote": "State employees may use frequent flyer miles and/or points for personal use",
+      "why": "miles may be kept; they do not make a dearer fare allowed"
+    }
+  ],
+  "design_notes": "Lines 141-142: using the reservation system for personal travel is prohibited; lines 211-212: the contracted rates are not extended to employees for personal travel. Buy nothing."
+}

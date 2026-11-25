@@ -1,0 +1,161 @@
+{
+  "id": "coyote-dell",
+  "category": "refusal",
+  "overlays": [
+    "outside_air_section"
+  ],
+  "twin_of": "umber-canyon",
+  "twin_fact": "where the teleworker flies: the Oakland headquarters office or a Phoenix conference",
+  "flag_twins": [],
+  "ambiguity_note": "none",
+  "request": "I telework from San Diego. Please book my flight to San Francisco on December 10 for my in-office days at the District 4 office in Oakland.",
+  "trip": {
+    "traveller_name": "Nadia Haddad",
+    "traveller_title": "Traffic Safety Engineer",
+    "passenger": "EMPLOYEE",
+    "accompanies": "",
+    "headquarters": "Caltrans District 4 office, Oakland, CA",
+    "residence": "San Diego, CA",
+    "on_telework": true,
+    "origin": "SAN",
+    "destination": "SFO",
+    "destination_region": "California",
+    "travel_date": "2026-12-10",
+    "booking_date": "2026-11-23",
+    "purpose": "In-office days at the District 4 office, Oakland (the traveller's headquarters)",
+    "purpose_kind": "HEADQUARTERS_OFFICE_DAY",
+    "must_arrive_by": "",
+    "requested_cabin": "ECONOMY",
+    "requested_airline": "",
+    "requested_fare": "ANY",
+    "connections_ok": false,
+    "plans_fixed": true,
+    "assignment_email_on_file": false,
+    "extra_seat_needed": false,
+    "contract_fares": [
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "CAPACITY_CONTROLLED",
+        "fare_cents": 15400
+      },
+      {
+        "carrier": "Alaska Airlines",
+        "kind": "YCAL",
+        "fare_cents": 29800
+      }
+    ],
+    "ticket_credits": [],
+    "sign_offs": [
+      {
+        "role": "SUPERVISOR",
+        "name": "Dana Whitfield",
+        "subject": "TRIP",
+        "status": "APPROVED",
+        "date": "2026-11-20"
+      }
+    ],
+    "notes": []
+  },
+  "world": {
+    "searches": [
+      {
+        "name": "out",
+        "origin": "SAN",
+        "destination": "SFO",
+        "date": "2026-12-10",
+        "return_date": "",
+        "background": 0,
+        "flights": {
+          "wn": {
+            "carrier": "WN",
+            "depart": "07:10",
+            "via": [
+              "LAS"
+            ],
+            "layovers": [
+              45
+            ]
+          },
+          "as": {
+            "carrier": "AS",
+            "depart": "08:00"
+          }
+        },
+        "offers": [
+          {
+            "slot": "wn-saver",
+            "flight": "wn",
+            "cabin": "ECONOMY",
+            "fare_cents": 11900
+          },
+          {
+            "slot": "as-controlled",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 15400,
+            "refundable": true
+          },
+          {
+            "slot": "as-ycal",
+            "flight": "as",
+            "cabin": "ECONOMY",
+            "fare_cents": 29800,
+            "refundable": true
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "decision": "REFUSE",
+    "offer_slots": [],
+    "cabins": [
+      "NONE"
+    ],
+    "reason_codes": [
+      "COMMUTING_NOT_REIMBURSABLE",
+      "PERSONAL_TRAVEL_NOT_COVERED"
+    ],
+    "approvers": [
+      "APPOINTING_AUTHORITY",
+      "NONE",
+      "SUPERVISOR"
+    ],
+    "clauses": [
+      "COMMERCIAL_AIR_TRAVEL",
+      "TRANSPORTATION_GENERAL"
+    ],
+    "unclear_phrase": ""
+  },
+  "must_keep": [
+    {
+      "lines": [
+        154,
+        159
+      ],
+      "sha256": "2d091759649d3700644b1d8d3611bb5c5355ca66c2d84d3bbee2872669a6b17a",
+      "quote": "• Commercial air flight expenses arising from travel between residence or garage and headquarters are not reimbursable for employees who are on telework status. The telework status do not change the employee's headquarter location. An employee's designated headquarter is established by the appointing power for each state officer and employee.",
+      "why": "no air travel between residence and headquarters on telework status"
+    },
+    {
+      "lines": [
+        61,
+        65
+      ],
+      "sha256": "c97782f98da0426c4132ff484909ed935321ac262cadbcdf534127011e474944",
+      "quote": "Transportation expenses arising from travel between residence or garage and headquarters are not reimbursable for employees who are on telework status. The telework status do not change the employee's headquarter location. An employee's designated headquarter is established by the appointing power for each state officer and employee.",
+      "why": "telework does not move the headquarters; residence-headquarters travel not reimbursable"
+    },
+    {
+      "lines": [
+        48,
+        49
+      ],
+      "sha256": "f3e506a20672a721eb790a9d588e85eecfd550e70966fd09c704c4cc90dea9ca",
+      "quote": "Expenses arising from travel between home or garage and headquarters will not be allowed.",
+      "why": "travel between home and headquarters is not allowed"
+    }
+  ],
+  "distractors": [],
+  "design_notes": "Lines 154-159 and 61-65: flights between residence and headquarters are not reimbursable for an employee on telework status, and telework does not move the headquarters (Oakland); lines 48-49 bar home-headquarters travel. The supervisor's approval on file goes unused (SYNC_NOTES 4(b)): NONE or the supervisor."
+}
