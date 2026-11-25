@@ -52,7 +52,7 @@ ID_CATEGORY_ENUMS = [contract.Passenger, contract.Purpose, contract.FareWish, co
 # How many scenarios a degenerate agent may pass: one that always holds the right offer for approval, and
 # one that always books the cheapest seat (with the right section). Set to what each actually passes (README).
 MAX_PASS_ALWAYS_FLAG = 2
-MAX_PASS_ALWAYS_LOWEST = 12
+MAX_PASS_ALWAYS_LOWEST = 13
 
 # This handbook has no flight-length threshold (rules.DURATION_RULES is empty), so no hand-built cases.
 DURATION_CASES = []

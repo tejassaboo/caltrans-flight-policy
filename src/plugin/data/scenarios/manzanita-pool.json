@@ -135,7 +135,8 @@
     ],
     "reason_codes": [
       "ADVANCE_PURCHASE_TOO_LATE",
-      "INTERNATIONAL_SHORT_NOTICE_JUSTIFIED"
+      "INTERNATIONAL_SHORT_NOTICE_JUSTIFIED",
+      "LOWEST_FARE"
     ],
     "approvers": [
       "APPOINTING_AUTHORITY",
@@ -201,5 +202,5 @@
       "why": "how to book abroad, not which fare"
     }
   ],
-  "design_notes": "Booked November 24 for December 23: 29 calendar days, less than 30 (221), and Concur asks for the justification before it books (224-226): the reason is the short-notice justification, not LOWEST_FARE. "
+  "design_notes": "Booked November 24 for December 23: 29 calendar days, less than 30 (221), and Concur asks for the justification before it books (224-226): the short-notice justification is accepted beside LOWEST_FARE, since nothing asked for is declined. "
 }

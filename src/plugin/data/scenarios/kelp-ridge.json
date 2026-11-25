@@ -125,7 +125,8 @@
     ],
     "reason_codes": [
       "ADVANCE_PURCHASE_TOO_LATE",
-      "DOMESTIC_SHORT_NOTICE_JUSTIFIED"
+      "DOMESTIC_SHORT_NOTICE_JUSTIFIED",
+      "LOWEST_FARE"
     ],
     "approvers": [
       "APPOINTING_AUTHORITY",
@@ -190,5 +191,5 @@
       "why": "a cost-saving tip, not a bar on later non-refundable fares"
     }
   ],
-  "design_notes": "Booked November 25 for December 1: 6 calendar days, less than 7 (220), and Concur asks for the justification before it books (224-226): the reason is the short-notice justification, not LOWEST_FARE. "
+  "design_notes": "Booked November 25 for December 1: 6 calendar days, less than 7 (220), and Concur asks for the justification before it books (224-226): the short-notice justification is accepted beside LOWEST_FARE, since nothing asked for is declined. "
 }

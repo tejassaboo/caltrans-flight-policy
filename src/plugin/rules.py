@@ -388,11 +388,12 @@ def default_booking(trip, fares, clauses):
     reasons = [ReasonCode.LOWEST_FARE, *offer_codes(trip, fares, chosen), *routing]
     if notice_codes(trip, fares["scope"]):
         # Lines 220-221 and 224-226: a short-notice booking cannot proceed without its reason code justification,
-        # so the reason given is a justification the booking needs (the short-notice one among them), not the
-        # generic lowest-fare or fare-describing codes: this is what the 6/7-day and 29/30-day twins test.
+        # so a justification the booking needs (the short-notice one among them) is accepted, not the
+        # fare-describing codes. Nothing asked for is declined and the booking rests on lines 136-137, so
+        # LOWEST_FARE stays accepted (validation w3: three of three short-notice bookings gave it, APPROVER_REVIEW 7).
         if trip.ticket_credits:
             raise ValueError("a short-notice booking with a ticket credit is not modelled")
-        reasons = justification_codes(trip, fares, chosen)
+        reasons = [ReasonCode.LOWEST_FARE, *justification_codes(trip, fares, chosen)]
     why = ("Lines 136-137: the lowest cost airfare. Lines 167-168 and 186-187 allow a non-refundable fare only below "
            f"the contract rate of {fares["rate"]} cents")
     if trip.must_arrive_by:

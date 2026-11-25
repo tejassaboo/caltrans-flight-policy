@@ -118,6 +118,11 @@ def sign(role, name, subject, status="APPROVED", date="2026-11-20"):
     return {"role": role, "name": name, "subject": subject, "status": status, "date": date}
 
 
+# connections_ok is false when the traveller has said nothing about connections; validation w3 showed the bare
+# field read as a refusal, so the records whose cheapest fare connects say so in words.
+NO_CONNECTION_VIEW = "The traveller has not said whether a connecting flight would be acceptable."
+
+
 def trip_ok(name="Dana Whitfield", date="2026-11-20"):
     return sign("SUPERVISOR", name, "TRIP", date=date)
 
@@ -286,14 +291,14 @@ scenario(
     [search("SAN", "SFO", "2026-12-15",
             {"wn": fl("WN", "07:10", via=["LAS"], layovers=[45]), "as": fl("AS", "08:00"), "ua": fl("UA", "10:00")},
             [of("wn-saver", "wn", 11900), *contract_offers("as", "as", "SAN", "SFO"), of("ua-saver", "ua", 18900)])],
-    expected("BOOK", ["wn-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED",
+    expected("BOOK", ["wn-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED", "LOWEST_FARE",
                                     "NON_CONTRACT_CARRIER_JUSTIFIED"], IN_OK, BASE + JUST),
     [LOWEST, IN_STATE, NONREF, ROUTING, REASONS],
     "In-state: lines 183-185 allow Southwest's non-refundable fare, which is also below the 15400 contract fare "
     "(167-168) and the lowest cost airfare. The traveller accepts the connection and the training is the next day. "
     "Booked December 10 for December 15: 5 days, less than 7 (220), and Concur asks for the justification before "
-    "it books (224-226), so the reason given is a justification this booking needs: short notice, or Southwest as a "
-    "non-contracted carrier (218).",
+    "it books (224-226), so a justification this booking needs is accepted: short notice, or Southwest as a "
+    "non-contracted carrier (218). Nothing asked for is declined, so LOWEST_FARE (136-137) is accepted too.",
     distractors=[D_ANYTIME])
 
 scenario(
@@ -380,12 +385,14 @@ for name, twin, booked_on in (("kelp-ridge", "laurel-wash", "2026-11-25"), ("lau
         [search("LAX", "PHX", "2026-12-01",
                 {"aa": fl("AA", "07:00"), "wn": fl("WN", "11:30")},
                 [of("aa-saver", "aa", 15900), *contract_offers("aa", "aa", "LAX", "PHX"), of("wn-saver", "wn", 12900)])],
-        expected("BOOK", ["aa-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED"] if short
+        expected("BOOK", ["aa-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "DOMESTIC_SHORT_NOTICE_JUSTIFIED", "LOWEST_FARE"]
+                 if short
                  else ["LOWEST_FARE", "NON_REFUNDABLE_BELOW_CONTRACT_FARE"], OUT_OK,
                  OUT_BASE + (JUST if short else [])),
         [LOWEST, OUT_OF_STATE, OOS_APPROVAL] + ([REASONS] if short else []),
         ("Booked November 25 for December 1: 6 calendar days, less than 7 (220), and Concur asks for the "
-         "justification before it books (224-226): the reason is the short-notice justification, not LOWEST_FARE. ")
+         "justification before it books (224-226): the short-notice justification is accepted beside LOWEST_FARE, "
+         "since nothing asked for is declined. ")
         if short else
         ("Booked November 24 for December 1: 7 calendar days, not less than 7 (220): no short-notice justification. ")
         + "Southwest lands 13:40 local, after the 12:30 limit; American's non-refundable 15900 is below its 19800 "
@@ -408,12 +415,14 @@ for name, twin, booked_on in (("manzanita-pool", "nopal-crest", "2026-11-24"),
                 {"ac": fl("AC", "08:00"), "ua": fl("UA", "09:00"), "ws": fl("WS", "14:00")},
                 [of("ac-saver", "ac", 31900), of("ua-saver", "ua", 29900), *contract_offers("ua", "ua", "SFO", "YVR"),
                  of("ws-saver", "ws", 24900)])],
-        expected("BOOK", ["ua-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "INTERNATIONAL_SHORT_NOTICE_JUSTIFIED"] if short
+        expected("BOOK", ["ua-saver"], ["ADVANCE_PURCHASE_TOO_LATE", "INTERNATIONAL_SHORT_NOTICE_JUSTIFIED",
+                                        "LOWEST_FARE"] if short
                  else ["LOWEST_FARE", "NON_REFUNDABLE_BELOW_CONTRACT_FARE"], OUT_OK,
                  INTL_BASE + (JUST if short else [])),
         [LOWEST, NONREF, OOS_APPROVAL] + ([REASONS] if short else []),
         ("Booked November 24 for December 23: 29 calendar days, less than 30 (221), and Concur asks for the "
-         "justification before it books (224-226): the reason is the short-notice justification, not LOWEST_FARE. ")
+         "justification before it books (224-226): the short-notice justification is accepted beside LOWEST_FARE, "
+         "since nothing asked for is declined. ")
         if short else
         ("Booked November 23 for December 23: 30 calendar days, not less than 30 (221): no short-notice "
          "justification. ")
@@ -472,7 +481,8 @@ scenario(
     "quail-hollow", "multi_rule", ["multi_leg"],
     "Please book my flight from Los Angeles to Seattle on December 9. The design review is the next morning.",
     trip("LAX", "SEA", traveller_name="Samuel Adeyemi", traveller_title="Transportation Engineer (Civil)",
-         travel_date="2026-12-09", purpose="Ferry terminal design review, Seattle, December 10"),
+         travel_date="2026-12-09", purpose="Ferry terminal design review, Seattle, December 10",
+         notes=[NO_CONNECTION_VIEW]),
     [search("LAX", "SEA", "2026-12-09",
             {"via": fl("AS", "08:00", via=["SFO"], minutes=[75, 110], layovers=[30]),
              "direct": fl("AS", "09:00", minutes=[170])},
@@ -751,7 +761,8 @@ scenario(
     "Please book my flight from Los Angeles to Seattle on December 9. The ferry systems workshop is the next "
     "morning.",
     trip("LAX", "SEA", traveller_name="Teresa Morales", traveller_title="Senior Transportation Planner",
-         travel_date="2026-12-09", purpose="Ferry systems workshop, Seattle, December 10", purpose_kind="TRAINING"),
+         travel_date="2026-12-09", purpose="Ferry systems workshop, Seattle, December 10", purpose_kind="TRAINING",
+         notes=[NO_CONNECTION_VIEW]),
     [search("LAX", "SEA", "2026-12-09",
             {"via": fl("AS", "08:00", via=["SFO"], minutes=[75, 110], layovers=[145]),
              "direct": fl("AS", "09:00", minutes=[170])},
